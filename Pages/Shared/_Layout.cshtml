@@ -10,25 +10,12 @@
 </head>
 <body>
     <header>
-        <div id="topHeader" class="container-fluid p-0"><a id="siteTop"></a>
-            <div class="d-flex justify-content-end py-0 px-1" style="background-color: #FFEFEC;">
-
-                <ul class="list-inline list-unstyled m-0 pb-1 border-0 text-uppercase">
-                    <li class="list-inline-item m-0 p-0 border-0">
-                        <a asp-page="/Information/Contact" class="nav-link text-dark font-small font-weight-light py-0 px-2">Contact</a>
-                    </li>
-                    <li class="list-inline-item m-0 p-0 border-0">
-                        <a class="nav-link text-dark font-small font-weight-light py-0 px-2" href="#openingHours">Opening hours</a>
-                    </li>
-                </ul>
-            </div>            
-        </div>
-
 
         <div id="middleHeader" class="container">
             <div class="row">
                 <div class="col-sm-4 d-flex">
-                    <form class="form-inline align-self-center">
+
+                    <form class="form-inline align-self-center"> @*method to be determined*@
                         <div class="input-group">
 
                             <div class="input-group-prepend">
@@ -36,10 +23,12 @@
                                     <span class="iconify" data-icon="fa:search" data-inline="false"></span>
                                 </span>
                             </div>
+                            @*propery binding here with asp-for helper tag*@
                             <input type="text" class="form-control" placeholder="Search" >
 
                         </div>
                     </form>
+
                 </div>
 
                 <div class="col-sm-4 d-flex justify-content-center">
@@ -48,11 +37,13 @@
 
                 <div class="col-sm-4 d-flex justify-content-end">
                     <ul class="list-inline list-unstyled m-0 pb-1 border-0 align-self-center">
+
                         <li class="list-inline-item m-0 p-0 border-0">
                             <a asp-page="" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" /></a>
                         </li>
+
                         <li class="list-inline-item m-0 p-0 border-0">
-                            <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page=""><img src="~/images/user-64.png" height="48" /></a>
+                            <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Customer/CreateCustomer"><img src="~/images/user-64.png" height="48" /></a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +52,7 @@
 
 
         </div>
-        <nav id="bottomHeader" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 bg-white py-0">
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 bg-white py-0">
             <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -70,7 +61,7 @@
                 </button>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-
+                    @*Navbar content here*@
                     <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
                         <li class="nav-item px-1">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
@@ -82,39 +73,49 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="">Restaurants</a>
                         </li>
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Cinema</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="">Entertainment</a>
                         </li>
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Services</a>
-                        </li>
-                        <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" href="#centerInfo">Information</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <footer class="page-footer font-small text-dark font-weight-light pt-4">
 
-
-
-    <footer class="page-footer font-small text-dark font-weight-light pt-4" style="background-color: #FFEFEC;">
+        <div class="container-fluid text-center bg-light">
+            <a href="#middleHeader">
+                <div class="d-flex justify-content-center">
+                    <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
+                        <li class="nav-item px-1">
+                            <span class="iconify" data-icon="fa:angle-double-up" data-inline="false"></span>
+                        </li>
+                        <li class="nav-item px-1">
+                            <p class="m-0 p-0">Top</p>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        </div>
 
         <div class="container text-center text-md-left">
-
+            @*Footer content here*@
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <h5 class="text-uppercase mt-3 mb-4">Fisketorvet</h5>
                     <p>
                         <table class="table-borderless font-small">
                             <tr>
-                            <td><h6><a id="openingHours">Opening hours:</a></h6></td>
+                            <td><h6><a id="centerInfo">Opening hours:</a></h6></td>
                             </tr>
                             <tr>
                             <td>Monday - Sunday</td>
@@ -130,8 +131,7 @@
                                 <td>
                                     FISKETORVET<br />
                                     Havneholmen 5<br />
-                                    København V<br />
-                                    1561<br />
+                                    1561 København V<br />
                                 </td>
                             </tr>
 
@@ -144,7 +144,7 @@
                     <h6 class="font-weight mt-3 mb-4">For visitors</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#siteTop">Home</a>
+                            <a asp-page="/Index">Home</a>
                         </li>
                         <li>
                             <a href="#!">About</a>
@@ -161,6 +161,9 @@
                         <li>
                             <a href="#!">Center map</a>
                         </li>
+                        <li>
+                            <a href="#!">Parking</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -170,16 +173,13 @@
                     <h6 class="font-weighte mt-3 mb-4">For business</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#!">Link</a>
+                            <a href="#!">Become partner</a>
                         </li>
                         <li>
-                            <a href="#!">Link</a>
+                            <a href="#!">Rent</a>
                         </li>
                         <li>
-                            <a href="#!">Link</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link</a>
+                            <a href="#!">Advertise</a>
                         </li>
                     </ul>
                 </div>
@@ -187,35 +187,21 @@
                 <hr class="clearfix w-100 d-md-none">
 
                 <div class="col-md-2 mx-auto">
-                    <h6 class="font-weight text-uppercase mt-3 mb-4">Links</h6>
+                    <h6 class="font-weight mt-3 mb-4">Follow us</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#!">Link 1</a>
+                            <a href="#!">Facebook</a>
                         </li>
                         <li>
-                            <a href="#!">Link 2</a>
+                            <a href="#!">Instagram</a>
                         </li>
                         <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
+                            <a href="#!">YouTube</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <hr>
-
-        <ul class="list-unstyled list-inline text-center py-2">
-            <li class="list-inline-item">
-                <h5 class="mb-1">Register for free</h5>
-            </li>
-            <li class="list-inline-item">
-                <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
-            </li>
-        </ul>
 
         <hr>
 
