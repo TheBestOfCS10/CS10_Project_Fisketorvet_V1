@@ -12,7 +12,7 @@ namespace CS10_Project_Fisketorvet_V1.Models.Validators
         public override bool IsValid(object value)
         {
             string[] passwords = value as string[];
-            if (passwords[1]==passwords[2])
+            if (passwords[0]==passwords[1])
             {
                 return true;
             }
