@@ -14,6 +14,11 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         {
             get; set;
         }
+        [BindProperty]
+        public string ConfirmPassword
+        {
+            get;set;
+        }
         public IActionResult OnGet()
         {
             return Page();
