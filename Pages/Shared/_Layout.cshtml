@@ -3,25 +3,113 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CS10_Project_Fisketorvet_V1</title>
+    <title>@ViewData["Title"] - Fisketorvet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <style>
+        headerLinks {
+            font-weight: font-weight-light;
+            font-style: text-dark, text-uppercase, text-dark, font-small;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div id="topHeader" class="container-fluid p-0"><a id="siteTop"></a>
+            <div class="d-flex justify-content-end py-0 px-1">
+
+                <ul class="list-inline list-unstyled m-0 pb-1 border-0 text-uppercase text-dark font-small font-weight-light">
+
+                    <li class="list-inline-item m-0 p-0 border-0 dropdown">
+                        <a class="list-inline-item text-dark m-0 py-0 px-2 border-0" href="#" id="navbarServiceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Service
+                        </a>
+                        <div class="dropdown-menu p-0 " aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item m-0 px-1 border-0 text-uppercase text-dark font-small font-weight-light" href="#">Information</a>
+                            <a class="dropdown-item m-0 px-1 border-0 text-uppercase text-dark font-small font-weight-light" href="#">Center map</a>
+                            <a class="dropdown-item m-0 px-1 border-0 text-uppercase text-dark font-small font-weight-light" href="#">Find us</a>
+                            <a class="dropdown-item m-0 px-1 border-0 text-uppercase text-dark font-small font-weight-light" href="#">Parking</a>
+                            <a class="dropdown-item m-0 px-1 border-0 text-uppercase text-dark font-small font-weight-light" href="#">Lost &Aacute; Found</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
+                    <li class="list-inline-item m-0 p-0 border-0">
+                        <a asp-page="/Information/Contact" class="text-dark py-0 px-2">Contact</a>
+                    </li>
+                    <li class="list-inline-item m-0 p-0 border-0">
+                        <a class="text-dark py-0 px-2" href="#openingHours">Opening hours</a>
+                    </li>
+                </ul>
+            </div>            
+        </div>
+
+
+        <div id="middleHeader" class="container">
+            <div class="row">
+                <div class="col-sm-4 d-flex">
+
+                    <form id="searchBar"class="form-inline align-self-center">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <span class="iconify" data-icon="fa:search" data-inline="false"></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search" >
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col-sm-4 d-flex justify-content-center">
+                    <img src="~/images/ft_logo.jpg" height="120px" />
+                </div>
+
+                <div id="userButtons" class="col-sm-4 d-flex justify-content-end">
+                    <ul class="list-inline list-unstyled m-0 pb-1 border-0 align-self-center">
+                        <li class="list-inline-item m-0 p-0 border-0">
+                            <a asp-page="" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" /></a>
+                        </li>
+                        <li class="list-inline-item m-0 p-0 border-0">
+                            <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page=""><img src="~/images/user-64.png" height="48" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+
+
+        </div>
+        <nav id="bottomHeader" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 bg-white py-0">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CS10_Project_Fisketorvet_V1</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+
+                    <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
+                        <li class="nav-item px-1">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
+                            <a class="nav-link text-dark" asp-area="" asp-page="">Stores</a>
+                        </li>
+                        <li class="nav-item px-1">
+                            <a class="nav-link text-dark" asp-area="" asp-page="">Restaurants</a>
+                        </li>
+                        <li class="nav-item px-1">
+                            <a class="nav-link text-dark" asp-area="" asp-page="">Cinema</a>
+                        </li>
+                        <li class="nav-item px-1">
+                            <a class="nav-link text-dark" asp-area="" asp-page="">Services</a>
+                        </li>
+                        <li class="nav-item px-1">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -35,9 +123,137 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CS10_Project_Fisketorvet_V1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+
+
+    <footer class="page-footer font-small text-dark font-weight-light">
+
+        <a href="#topHeader" class="text-dark">
+            <div class="container-fluid d-flex justify-content-center bg-light">
+                <ul class="list-unstyled m-0">
+                    <li style="text-align:center">
+                        <span class="iconify" data-icon="fa:angle-double-up" data-inline="false"></span>
+                    </li>
+                    <li style="text-align:center">
+                        <span class="font-weight-normal">TOP</span>
+                    </li>
+                </ul>
+            </div>
+        </a>
+
+        <div class="container text-center text-md-left">
+
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <h5 class="text-uppercase mt-3 mb-4">Fisketorvet</h5>
+                        <ul id="openingHours" class="list-unstyled">
+                            <li>
+                                <p class="font-weight-bold">
+                                    Opening hours:
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Monday - Sunday <br />
+                                    10:00 - 20:00
+                                </p>
+                                
+                            </li>
+                            <li>
+                                
+                            </li>
+                            <li>
+                                <p class="font-weight-bold">
+                                    Address:
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    FISKETORVET<br />
+                                    Havneholmen 5<br />
+                                    1561 København V
+                                </p>
+                            </li>
+                        </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h6 class="font-weight mt-3 mb-4">For visitors</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#siteTop">Home</a>
+                        </li>
+                        <li>
+                            <a href="#!">About</a>
+                        </li>
+                        <li>
+                            <a href="#!">Stores</a>
+                        </li>
+                        <li>
+                            <a href="#!">Restaurants</a>
+                        </li>
+                        <li>
+                            <a href="#!">Services</a>
+                        </li>
+                        <li>
+                            <a href="#!">Center map</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h6 class="font-weighte mt-3 mb-4">For business</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h6 class="font-weight text-uppercase mt-3 mb-4">Links</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+
+        <hr>
+
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright: 2020 - CS10_Project_Fisketorvet_V1
+
         </div>
     </footer>
 
