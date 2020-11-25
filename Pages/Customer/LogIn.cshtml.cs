@@ -14,6 +14,10 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         {
             get;set;
         }
+        static public Models.Customer CurrentUser
+        {
+            get; set;
+        }
         public IActionResult OnGet()
         {
             return Page();
@@ -22,7 +26,15 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         {
             if(Models.Customer.VerifyUser(Customer))
             {
-                //current user = Catalog value
+                foreach(Models.Customer c in Models.Customer.Catalog.Values)
+                {
+                    if(c.Email==Customer.Email)
+                    {
+                        CurrentUser = c;
+                        break;
+                    }
+                }
+                return RedirectToPage("/Index");
             }
             return Page();
         }

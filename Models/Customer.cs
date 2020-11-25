@@ -11,7 +11,6 @@ namespace CS10_Project_Fisketorvet_V1.Models
         public const string JsonCustomers = @"C:\Users\Radu\source\repos\TheBestOfCS10\CS10_Project_Fisketorvet_V1\Data\Customers.json";
         int _id;
         string _name;
-        string _password;
         string[] _passwords = new string[2];
         string _email;
         public enum Gender
@@ -41,7 +40,6 @@ namespace CS10_Project_Fisketorvet_V1.Models
             set { _passwords[0] = value; }
         }
         [Required(ErrorMessage = "Your need to confirm your password")]
-        
         public string ConfirmPassword
         {
             get { return _passwords[1]; }
@@ -54,7 +52,8 @@ namespace CS10_Project_Fisketorvet_V1.Models
             set { _passwords = value; }
         }
         [Required(ErrorMessage = "The email is required")]
-        [Validators.EmailValidation(ErrorMessage ="This email is already taken")]
+        [Validators.EmailValidation(false, ErrorMessage ="This email is already taken")]
+        [EmailAddress(ErrorMessage ="This is not a valid email adress")]
         public string Email
         {
             get { return _email; }

@@ -8,14 +8,30 @@ namespace CS10_Project_Fisketorvet_V1.Models.Validators
 {
     public class EmailValidationAttribute : ValidationAttribute
     {
-        public override bool IsValid(object value)
+        bool _inverted;
+        public EmailValidationAttribute(bool inverted)
+        {
+            _inverted = inverted;
+        }
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             string email = value as string;
-            foreach (Customer c in Customer.Catalog.Values)
+            if (!_inverted)
             {
-                if (c.Email == email) return false;
+                foreach (Customer c in Customer.Catalog.Values)
+                {
+                    if (c.Email == email) return new ValidationResult("This email adress is already taken.");
+                }
+                return ValidationResult.Success;
             }
-            return true;
+            else
+            {
+                foreach (Customer c in Customer.Catalog.Values)
+                {
+                    if (c.Email == email) return ValidationResult.Success;
+                }
+                return new ValidationResult("This email adress does not belong to any account.");
+            }
         }
     }
 }
