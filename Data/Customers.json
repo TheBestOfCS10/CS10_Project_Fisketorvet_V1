@@ -1,0 +1,28 @@
+{
+  "1": {
+    "ID": 1,
+    "Name": "Adumitroaei Radu",
+    "Password": "2131241535",
+    "ConfirmPassword": null,
+    "Passwords": [
+      null,
+      "2131241535",
+      null
+    ],
+    "Email": "radueugen84@yahoo.com",
+    "CustomerGender": 0
+  },
+  "2": {
+    "ID": 2,
+    "Name": "Adumitroaei Radu",
+    "Password": "2131241535",
+    "ConfirmPassword": "2131241535",
+    "Passwords": [
+      null,
+      "2131241535",
+      "2131241535"
+    ],
+    "Email": "radueuge84@yahoo.com",
+    "CustomerGender": 0
+  }
+}
