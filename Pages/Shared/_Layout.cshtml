@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col-sm-4 d-flex justify-content-center">
-                    <img src="~/images/ft_logo.jpg" height="120px" />
+                    <img src="~/images/ft_logo.jpg" height="120" />
                 </div>
 
                 <div class="col-sm-4 d-flex justify-content-end">
@@ -41,9 +41,18 @@
                         <li class="list-inline-item m-0 p-0 border-0">
                             <a asp-page="" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" /></a>
                         </li>
-
                         <li class="list-inline-item m-0 p-0 border-0">
-                            <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Customer/CreateCustomer"><img src="~/images/user-64.png" height="48" /></a>
+                            @{ if (!CurrentUser.Exists)
+                                {
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Customer/LogIn"><img src="~/images/user-64.png" height="48" /></a>;
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Shared/ProfilePage"><img src="~/images/user-64.png" height="48" />@Shared.CurrentUser.User.FirstName</a>
+                                    
+                                    ;
+                                }
+                            }
                         </li>
                     </ul>
                 </div>
