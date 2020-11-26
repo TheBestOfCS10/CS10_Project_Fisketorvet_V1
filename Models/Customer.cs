@@ -10,7 +10,8 @@ namespace CS10_Project_Fisketorvet_V1.Models
     {
         public const string JsonCustomers = @"C:\Users\Radu\source\repos\TheBestOfCS10\CS10_Project_Fisketorvet_V1\Data\Customers.json";
         int _id;
-        string _name;
+        string _firstname;
+        string _lastname;
         string[] _passwords = new string[2];
         string _email;
         public enum Gender
@@ -25,15 +26,23 @@ namespace CS10_Project_Fisketorvet_V1.Models
             get { return _id; }
             set { _id = value; }
         }
-        [Required(ErrorMessage ="The name is required")]
-        [MaxLength(40, ErrorMessage ="The name cannot be this long")]
-        public string Name
+        [Required(ErrorMessage ="The first name is required")]
+        [MaxLength(20, ErrorMessage ="The name cannot be this long")]
+        public string FirstName
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _firstname; }
+            set { _firstname = value; }
+        }
+        [Required(ErrorMessage = "The last name is required")]
+        [MaxLength(20, ErrorMessage = "The name cannot be this long")]
+        public string LastName
+        {
+            get { return _lastname; }
+            set { _lastname = value; }
         }
         [Required(ErrorMessage = "The password is required")]
         [MaxLength(20, ErrorMessage = "The password must be maximum 20 characters long")]
+        [MinLength(6, ErrorMessage ="The password must be at least 6 characters long")]
         public string Password
         {
             get { return _passwords[0]; }
@@ -78,13 +87,9 @@ namespace CS10_Project_Fisketorvet_V1.Models
                 }
             }
         }
-        public static bool VerifyUser(Customer customer)
+        public static Customer Search(int id)
         {
-            foreach(Customer c in Catalog.Values)
-            {
-                if (c.Email == customer.Email && c.Password == customer.Password) return true;
-            }
-            return false;
+            return Catalog[id];
         }
     }
 }

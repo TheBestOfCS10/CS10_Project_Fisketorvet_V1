@@ -9,14 +9,18 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
 {
     public class LogInModel : PageModel
     {
+        string[] currentuser = new string[2];
+        [Models.Validators.LogInVerification(ErrorMessage ="The email or password is wrong")]
         [BindProperty]
-        public Models.Customer Customer
+        public string[] CurrentUser
+        {
+            get { return currentuser; }
+            set { currentuser = value; }
+        }
+        [BindProperty]
+        public bool RemainLoggedIn
         {
             get;set;
-        }
-        static public Models.Customer CurrentUser
-        {
-            get; set;
         }
         public IActionResult OnGet()
         {
@@ -24,19 +28,15 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         }
         public IActionResult OnPost()
         {
-            if(Models.Customer.VerifyUser(Customer))
+            if(!ModelState.IsValid)
             {
-                foreach(Models.Customer c in Models.Customer.Catalog.Values)
-                {
-                    if(c.Email==Customer.Email)
-                    {
-                        CurrentUser = c;
-                        break;
-                    }
-                }
-                return RedirectToPage("/Index");
+                return Page();
             }
-            return Page();
+            Models.Customer NewUser = new Models.Customer();
+            NewUser.Email = CurrentUser[0];
+            NewUser.Password = CurrentUser[1];
+            Shared.CurrentUser.ChangeUser(NewUser, RemainLoggedIn);
+            return RedirectToPage("/Index");
         }
     }
 }
