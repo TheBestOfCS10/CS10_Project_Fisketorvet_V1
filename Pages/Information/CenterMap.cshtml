@@ -1,0 +1,62 @@
+﻿@page
+@model CS10_Project_Fisketorvet_V1.Pages.Information.CenterMapModel
+@{
+    ViewData["Title"] = "Map";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 justify-content-center text-center">
+            <h4>Center map</h4>
+           
+            <div class="card">
+                <div class="card-header">
+                    <p class="lead">
+                        Choose a level
+                    </p>
+                    <ul class="nav nav-tabs card-header-tabs pull-right justify-content-center" id="mapTab" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" id="lvl0-tab" data-toggle="tab" href="#lvl0" role="tab" aria-controls="lvl0" aria-selected="true">0</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="lvl1-tab" data-toggle="tab" href="#lvl1" role="tab" aria-controls="lvl1" aria-selected="false">1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="lvl2-tab" data-toggle="tab" href="#lvl2" role="tab" aria-controls="lvl2" aria-selected="false">2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="lvl3-tab" data-toggle="tab" href="#lvl3" role="tab" aria-controls="lvl3" aria-selected="false">3</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="lvl0" role="tabpanel" aria-labelledby="lvl0-tab"><img src="~/images/lvl0.png" class="mw-100" /></div>
+
+                        <div class="tab-pane fade" id="lvl1" role="tabpanel" aria-labelledby="lvl1-tab"><img src="~/images/lvl1.png" class="mw-100" /></div>
+
+                        <div class="tab-pane fade" id="lvl2" role="tabpanel" aria-labelledby="lvl2-tab"><img src="~/images/lvl2.png" class="mw-100" /></div>
+
+                        <div class="tab-pane fade" id="lvl3" role="tabpanel" aria-labelledby="lvl3-tab"><img src="~/images/lvl3.png" class="mw-100" /></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+    
+
+
+
+
+
