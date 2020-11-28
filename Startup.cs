@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CS10_Project_Fisketorvet_V1.Interfaces;
+using CS10_Project_Fisketorvet_V1.Pages.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,7 @@ namespace CS10_Project_Fisketorvet_V1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddSingleton<IStores, StoresCatalog>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
