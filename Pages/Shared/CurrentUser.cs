@@ -5,38 +5,46 @@ using System.Threading.Tasks;
 
 namespace CS10_Project_Fisketorvet_V1.Pages.Shared
 {
-    //used to store info about the user that is logged in
-    public class CurrentUser : Models.Customer
+    public class CurrentUser
     {
-      
         const string JsonFileName = @"Data\LoggedInUser.json";
-        static Models.Customer _user = Helpers.JsonFileHelper<Models.Customer>.ReadJsonSingle(JsonFileName);
-        public static Models.Customer User
+        static int _user;
+        public CurrentUser()
+        {
+            try
+            {
+                _user = Helpers.JsonFileHelper<int>.ReadJsonSingle(JsonFileName);
+            }
+            catch
+            {
+                _user = 0;
+            }
+        }
+        public static int User
         {
             get { return _user; }
             set { _user = value; }
         }
-        //string[] validate = new string[2];
-        //public string[] Validate
-        //{
-        //    get { validate[0]= Email;
-        //        validate[1]= Password;
-        //        return validate; }
-        //}
         static public bool Exists
         {
-            get {
-                return User.Email != null;
+            get
+            {
+                return User != 0;
             }
         }
         static public void ChangeUser(Models.Customer user, bool remainloggedin)
         {
-            foreach(Models.Customer c in Models.Customer.Catalog.Values)
+            foreach (Models.Customer c in Models.Customer.Catalog.Values)
             {
                 if (c.Email == user.Email) user = c;
             }
-            User = user;
-            if(remainloggedin) Helpers.JsonFileHelper<Models.Customer>.WriteToJsonSingle(User, JsonFileName);
+            User = user.ID;
+            if (remainloggedin) Helpers.JsonFileHelper<int>.WriteToJsonSingle(User, JsonFileName);
+        }
+        static public void LogOut()
+        {
+            User = 0;
+            Helpers.JsonFileHelper<int>.WriteToJsonSingle(User, JsonFileName);
         }
     }
 }

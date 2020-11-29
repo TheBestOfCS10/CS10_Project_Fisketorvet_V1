@@ -1,15 +1,1 @@
-{
-  "1": {
-    "ID": 1,
-    "FirstName": "Radu",
-    "LastName": "A",
-    "Password": "123456",
-    "ConfirmPassword": "123456",
-    "Passwords": [
-      "123456",
-      "123456"
-    ],
-    "Email": "radueugen84@yahoo.com",
-    "CustomerGender": 0
-  }
-}
+{}

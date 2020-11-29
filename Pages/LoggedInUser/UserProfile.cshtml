@@ -1,0 +1,8 @@
+﻿@page "UserProfile"
+@model CS10_Project_Fisketorvet_V1.Pages.Shared.UserProfileModel
+@{
+    ViewData["Title"] = "UserProfile";
+}
+<a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@Shared.CurrentUser.User">Edit Profile</a>
+<p></p>
+<a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@Shared.CurrentUser.User">Delete Account</a>

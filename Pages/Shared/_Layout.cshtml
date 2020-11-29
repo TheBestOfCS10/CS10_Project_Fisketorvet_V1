@@ -48,7 +48,7 @@
                                 }
                                 else
                                 {
-                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Shared/ProfilePage"><img src="~/images/user-64.png" height="48" />@Shared.CurrentUser.User.FirstName</a>
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" />@Models.Customer.Catalog[Shared.CurrentUser.User].FirstName</a>
                                     
                                     ;
                                 }

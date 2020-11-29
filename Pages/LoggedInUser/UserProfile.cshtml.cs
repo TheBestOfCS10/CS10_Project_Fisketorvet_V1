@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CS10_Project_Fisketorvet_V1.Pages.Shared
 {
-    public class ProfilePageModel : PageModel
+    public class UserProfileModel : PageModel
     {
+        
         public void OnGet()
         {
         }

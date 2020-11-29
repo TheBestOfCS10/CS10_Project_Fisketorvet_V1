@@ -91,5 +91,24 @@ namespace CS10_Project_Fisketorvet_V1.Models
         {
             return Catalog[id];
         }
+        public static void Update(Customer customer)
+        {
+            foreach (Customer c in Catalog.Values)
+            {
+                if (c.ID == customer.ID)
+                {
+                    c.FirstName = customer.FirstName;
+                    c.LastName = customer.LastName;
+                    c.Email = customer.Email;
+                    c.CustomerGender = customer.CustomerGender;
+                    Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
+                }
+            }
+        }
+        public static void Delete(int id)
+        {
+            Catalog.Remove(id);
+            Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
+        }
     }
 }
