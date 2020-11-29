@@ -73,20 +73,32 @@
                     @*Navbar content here*@
                     <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark py-1" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Stores</a>
+                            <a class="nav-link text-dark py-1" asp-area="" asp-page="/Stores/stores">Stores</a>
                         </li>
 
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Restaurants</a>
+                            <a class="nav-link text-dark py-1" asp-area="" asp-page="">Restaurants</a>
                         </li>
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Entertainment</a>
+                            <a class="nav-link text-dark py-1" asp-area="" asp-page="">Entertainment</a>
                         </li>
                         <li class="nav-item px-1">
-                            <a class="nav-link text-dark" href="#centerInfo">Information</a>
+
+                            <div class="dropdown nav-item">
+                                <button class="nav-link text-dark py-1 m-0 border-0 bg-white" id="infoMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Information
+                                </button>
+                                <div class="dropdown-menu p-0 border-top-0" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item m-0 px-2 py-1" href="#openingHours">Opening hours</a>
+                                    <a class="dropdown-item m-0 px-2 py-1" asp-page="/Information/CenterMap">Center map</a>
+                                    <a class="dropdown-item m-0 px-2 py-1" href="#">Something else here</a>
+                                </div>
+                            </div>
+
+
                         </li>
                     </ul>
                 </div>
@@ -125,7 +137,7 @@
                     <p>
                         <table class="table-borderless font-small">
                             <tr>
-                            <td><h6><a id="centerInfo">Opening hours:</a></h6></td>
+                            <td><h6><a id="openingHours">Opening hours:</a></h6></td>
                             </tr>
                             <tr>
                             <td>Monday - Sunday</td>
@@ -160,7 +172,7 @@
                             <a href="#!">About</a>
                         </li>
                         <li>
-                            <a href="#!">Stores</a>
+                            <a href="/Stores/stores">Stores</a>
                         </li>
                         <li>
                             <a href="#!">Restaurants</a>
@@ -169,7 +181,7 @@
                             <a href="#!">Services</a>
                         </li>
                         <li>
-                            <a href="#!">Center map</a>
+                            <a asp-page="/Information/CenterMap">Center map</a>
                         </li>
                         <li>
                             <a href="#!">Parking</a>
