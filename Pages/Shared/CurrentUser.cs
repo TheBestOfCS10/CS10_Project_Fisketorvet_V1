@@ -10,7 +10,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Shared
     {
       
         const string JsonFileName = @"Data\LoggedInUser.json";
-        static Models.Customer _user = Helpers.JsonFileReaderSingle<Models.Customer>.ReadJson(JsonFileName);
+        static Models.Customer _user = Helpers.JsonFileHelper<Models.Customer>.ReadJsonSingle(JsonFileName);
         public static Models.Customer User
         {
             get { return _user; }
@@ -36,7 +36,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Shared
                 if (c.Email == user.Email) user = c;
             }
             User = user;
-            if(remainloggedin) Helpers.JsonFileWritterSingle<Models.Customer>.WriteToJson(User, JsonFileName);
+            if(remainloggedin) Helpers.JsonFileHelper<Models.Customer>.WriteToJsonSingle(User, JsonFileName);
         }
     }
 }

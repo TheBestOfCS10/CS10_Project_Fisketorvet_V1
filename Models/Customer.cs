@@ -20,7 +20,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
             Female
         }
         Gender _gender;
-        public static Dictionary<int, Customer> Catalog = Helpers.JsonFileReader<Customer>.ReadJson(JsonCustomers);
+        public static Dictionary<int, Customer> Catalog = Helpers.JsonFileHelper<Customer>.ReadJson(JsonCustomers);
         public int ID
         {
             get { return _id; }
@@ -82,7 +82,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
                 {
                     customer.ID = i;
                     Catalog.Add(i, customer);
-                    Helpers.JsonFileWritter<Customer>.WriteToJson(Catalog, JsonCustomers);
+                    Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
                     break;
                 }
             }
