@@ -1,0 +1,27 @@
+﻿@page
+@model CS10_Project_Fisketorvet_V1.Pages.Stores.StoresModel
+@{ 
+}
+
+<h1 class="text-center">Stores</h1>
+<form method="get">
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Stores)
+        {
+            <div class="col-6 figure-img m-auto border">
+                <a href="#" class="text-reset">
+                    <img class="w-100" src='~/images/@item.Value.ImageName' height="380">
+                    <h2 class="text-center flex-column ">@item.Value.Name</h2>
+                    <p class="text-center flex-column ">@item.Value.Description</p>
+                    <p class="text-center flex-column ">@item.Value.Id</p>
+                </a>
+            </div>
+        }
+    </div>
+</div>

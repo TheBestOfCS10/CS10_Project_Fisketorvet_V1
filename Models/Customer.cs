@@ -8,7 +8,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
 {
     public class Customer
     {
-        public const string JsonCustomers = @"C:\Users\Radu\source\repos\TheBestOfCS10\CS10_Project_Fisketorvet_V1\Data\Customers.json";
+        public const string JsonCustomers = @"Data\Customers.json";
         int _id;
         string _firstname;
         string _lastname;
@@ -20,7 +20,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
             Female
         }
         Gender _gender;
-        public static Dictionary<int, Customer> Catalog = Helpers.JsonFileReader<Customer>.ReadJson(JsonCustomers);
+        public static Dictionary<int, Customer> Catalog = Helpers.JsonFileHelper<Customer>.ReadJson(JsonCustomers);
         public int ID
         {
             get { return _id; }
@@ -82,7 +82,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
                 {
                     customer.ID = i;
                     Catalog.Add(i, customer);
-                    Helpers.JsonFileWritter<Customer>.WriteToJson(Catalog, JsonCustomers);
+                    Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
                     break;
                 }
             }
@@ -90,6 +90,25 @@ namespace CS10_Project_Fisketorvet_V1.Models
         public static Customer Search(int id)
         {
             return Catalog[id];
+        }
+        public static void Update(Customer customer)
+        {
+            foreach (Customer c in Catalog.Values)
+            {
+                if (c.ID == customer.ID)
+                {
+                    c.FirstName = customer.FirstName;
+                    c.LastName = customer.LastName;
+                    c.Email = customer.Email;
+                    c.CustomerGender = customer.CustomerGender;
+                    Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
+                }
+            }
+        }
+        public static void Delete(int id)
+        {
+            Catalog.Remove(id);
+            Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
         }
     }
 }

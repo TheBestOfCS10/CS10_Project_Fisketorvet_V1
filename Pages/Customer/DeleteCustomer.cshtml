@@ -1,0 +1,12 @@
+﻿@page "DeleteCustomer"
+@model CS10_Project_Fisketorvet_V1.Pages.Customer.DeleteCustomerModel
+@{
+    ViewData["Title"] = "DeleteCustomer";
+}
+Are you sure you wish to delete your account?
+<div>
+    <form method="post">
+        <input class="btn btn-danger" type="submit" value="Delete" asp-route-delete="true" />
+        <input class="btn btn-outline-primary" type="submit" value="Go back" asp-route-delete="false" />
+    </form>
+</div>
