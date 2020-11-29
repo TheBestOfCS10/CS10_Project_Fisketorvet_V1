@@ -8,7 +8,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
 {
     public class Customer
     {
-        public const string JsonCustomers = @"C:\Users\Radu\source\repos\TheBestOfCS10\CS10_Project_Fisketorvet_V1\Data\Customers.json";
+        public const string JsonCustomers = @"Data\Customers.json";
         int _id;
         string _firstname;
         string _lastname;

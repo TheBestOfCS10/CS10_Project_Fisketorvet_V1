@@ -8,7 +8,8 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Shared
     //used to store info about the user that is logged in
     public class CurrentUser : Models.Customer
     {
-        const string JsonFileName = @"C:\Users\Radu\Source\Repos\TheBestOfCS10\CS10_Project_Fisketorvet_V1\Data\LoggedInUser.json";
+      
+        const string JsonFileName = @"Data\LoggedInUser.json";
         static Models.Customer _user = Helpers.JsonFileReaderSingle<Models.Customer>.ReadJson(JsonFileName);
         public static Models.Customer User
         {
