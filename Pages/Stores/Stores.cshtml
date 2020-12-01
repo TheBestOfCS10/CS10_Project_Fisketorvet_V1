@@ -15,7 +15,7 @@
         @foreach (var item in Model.Stores)
         {
             <div class="col-6 figure-img m-auto border">
-                <a href="#" class="text-reset">
+                <a asp-page="ShowStore" asp-route-storeId="@item.Value.Id" class="text-reset">
                     <img class="w-100" src='~/images/@item.Value.ImageName' height="380">
                     <h2 class="text-center flex-column ">@item.Value.Name</h2>
                     <p class="text-center flex-column ">@item.Value.Description</p>
