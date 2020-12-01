@@ -12,6 +12,10 @@ namespace CS10_Project_Fisketorvet_V1.Models
         public string Brand { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
+        public int Quantity;
+        
+
         
     }
+   
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CS10_Project_Fisketorvet_V1.Interfaces;
 using CS10_Project_Fisketorvet_V1.Models;
 
 namespace CS10_Project_Fisketorvet_V1.Catalogs
 {
-    public class ProductCatalog
+    public class ProductCatalog 
     {
         private List<Product> ListofProducts { get; set; }
 

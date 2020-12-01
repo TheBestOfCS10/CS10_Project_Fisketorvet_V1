@@ -1,5 +1,24 @@
 ﻿@page
 @model CS10_Project_Fisketorvet_V1.Pages.BasketModel
 @{
-    ViewData["Title"] = "Basket";
+    ViewData["Title"] = "Shopping Cart";
 }
+<h1>Cart</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Product)
+        {
+            <div class="col-6 figure-img m-auto border">
+                <a href="#" class="text-reset">
+                    <h2 class="text-center flex-column">@item.Id</h2>
+                    <p class="text-center flex-column ">@item.Name</p>
+                    <p class="text-center flex-column ">@item.Brand</p>
+                    <p class="text-center flex-column ">@item.Description</p>
+                    <p class="text-center flex-column ">@item.Price</p>
+                    <p class="text-center flex-column ">@item.</p>
+                </a>
+            </div>
+        }
+    </div>
+</div>
