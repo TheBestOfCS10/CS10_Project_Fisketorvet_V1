@@ -1,0 +1,71 @@
+﻿@page
+@model CS10_Project_Fisketorvet_V1.Pages.Stores.StoreAdminModel
+@{
+    ViewData["Title"] = "Product administration";
+}
+
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <div class="col-5">
+            <p>placeholder for search bar</p>
+        </div>
+        <div class="col-5">
+            <a asp-page="AddNewProduct" asp-route-storeId="@Model.StoreId" class="btn btn-primary">Add new product</a>
+        </div>
+
+        <div class="row justify-content-center">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.ProductId</td>
+                            <td>@product.ProductName</td>
+                            <td>@product.ProductDescription</td>
+                            <td>@product.ProductPrice</td>
+                            <td>Edit</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                    Delete item
+                                </button>
+
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteMadalLongTitle">Delete item</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                You are about to delete @product.ProductName
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                                <form method="post" asp-page-handler="Delete" asp-route-storeId="@Model.StoreId">
+                                                    <button class="btn btn-danger">Delete</button>
+                                                    <input type="hidden" name="prodId" value="@product.ProductId" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
