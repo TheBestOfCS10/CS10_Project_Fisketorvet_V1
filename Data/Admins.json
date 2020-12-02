@@ -1,0 +1,17 @@
+{
+  "1": {
+    "Access": 3,
+    "ID": 1,
+    "FirstName": "Admin",
+    "LastName": "A",
+    "Password": "123456",
+    "ConfirmPassword": "123456",
+    "Passwords": [
+      "123456",
+      "123456"
+    ],
+    "Email": "admin@admin.com",
+    "CustomerGender": 0,
+    "Account": null
+  }
+}

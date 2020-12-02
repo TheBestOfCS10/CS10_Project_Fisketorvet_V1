@@ -14,6 +14,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
         string _lastname;
         string[] _passwords = new string[2];
         string _email;
+        BankAccount _account;
         public enum Gender
         {
             Male,
@@ -73,6 +74,11 @@ namespace CS10_Project_Fisketorvet_V1.Models
         {
             get { return _gender; }
             set { _gender = value; }
+        }
+        public BankAccount Account
+        {
+            get { return _account; }
+            set { _account = value; }
         }
         public static void Create(Customer customer)
         {

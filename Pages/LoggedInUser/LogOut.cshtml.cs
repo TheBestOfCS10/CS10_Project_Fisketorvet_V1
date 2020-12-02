@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
 {
-    public class UserProfileModel : PageModel
+    public class LogOutModel : PageModel
     {
-        
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            CurrentUser.LogOut();
+            return RedirectToPage("/UserProfile");
         }
     }
 }

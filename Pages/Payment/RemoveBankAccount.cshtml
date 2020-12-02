@@ -1,0 +1,11 @@
+﻿@page "RemoveBankAccount"
+@model CS10_Project_Fisketorvet_V1.Pages.Payment.RemoveBankAccountModel
+@{
+    ViewData["Title"] = "RemoveBankAccount";
+}
+Are you sure you wish to remove your bank account?
+<form method="post">
+    <input type="submit" class="btn btn-danger" value="Yes" asp-route-delete="true" />
+    <p></p>
+    <input type="submit" class="btn btn-outline-primary" value="No" asp-route-delete="false" />
+</form>

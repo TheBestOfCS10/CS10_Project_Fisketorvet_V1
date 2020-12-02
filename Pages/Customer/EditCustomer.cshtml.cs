@@ -15,12 +15,12 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         Models.Customer.Gender _gender;
         public static Models.Customer Customer
         {
-            get;set;
+            get; set;
         }
         [BindProperty, Required(ErrorMessage = "The first name is required"), MaxLength(20, ErrorMessage = "The first name cannot be this long")]
         public string FirstName
         {
-            get { return _firstname; } 
+            get { return _firstname; }
             set { _firstname = value; }
         }
         [BindProperty, Required(ErrorMessage = "The first name is required"), MaxLength(20, ErrorMessage = "The last name cannot be this long")]
@@ -45,7 +45,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         }
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

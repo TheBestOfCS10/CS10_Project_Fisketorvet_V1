@@ -17,9 +17,10 @@ namespace CS10_Project_Fisketorvet_V1.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            if (Models.Admin.AdminCatalog.ContainsKey(LoggedInUser.CurrentUser.User[0])) return RedirectToPage("AdminHomePage");
+            return Page();
         }
     }
 }
