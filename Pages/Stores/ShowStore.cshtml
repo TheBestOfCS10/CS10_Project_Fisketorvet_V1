@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model CS10_Project_Fisketorvet_V1.Pages.Stores.ShowStoreModel
 @{
     ViewData["Title"] = $"{Model.Store.Name}";
@@ -12,25 +12,33 @@
         {
             <div class="col col-sm-4 col-md-3">
                 <div class="card" >
-                    <div class="card-body">
-                        <h5 class="card-title">@p.ProductName</h5>
-                        <h6 class="card-subtitle mb-2 text-muted"></h6>
-                        <div class="d-flex justify-content-center my-4">
+                    <div class="card-body py-1 px-2">
+                        <h6 class="card-title mb-2">@p.ProductName</h6>
+                        <div class="d-flex justify-content-center my-2">
                             <img src="/images/@p.ImagePath" class="w-75" />
-
                         </div>
+                        <p class="card-text mb-2">@p.ProductDescription</p>
+                        <ul class="m-0 p-1">
+                            <li class="row justify-content-start m-0">
+                                <p style="text-align: right">@p.ProductPrice kr.</p>
+                            </li>
+                            <li class="row justify-content-end m-0">
+                                <a href="#" class="card-link">Add to basket</a>
+                            </li>
+                        </ul>
+                        
 
-                        <p class="card-text">@p.ProductDescription</p>
-                        <p style="text-align: right">@p.ProductPrice kr.</p>
-                        <a href="#" class="card-link">Add to basket</a>
                     </div>
                 </div>
             </div>
         }
-
     </div>
-
-
-        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.Store.Id" class="btn btn-primary">Store admin</a>
+    <div class="bg-warning border-danger">
+        <p>
+            This button should not be seen for visitors, only for store administrator<br />
+            It is here for testing purposes
+            <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.Store.Id" class="btn btn-primary">Store admin</a>
+        </p>
+    </div>
 
 </div>
