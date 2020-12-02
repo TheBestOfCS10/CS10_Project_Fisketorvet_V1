@@ -1,0 +1,44 @@
+﻿@page "AddBankAccount"
+@model CS10_Project_Fisketorvet_V1.Pages.Payment.AddBankAccountModel
+@{
+    ViewData["Title"] = "AddBankAccount";
+}
+<div>
+    <form method="post">
+        <div class="form-group">
+            <label class="control-label" asp-for="BankAccount.BankName">Bank Name:</label>
+            <input class="form-control" type="text" asp-for="BankAccount.BankName" />
+            <span asp-validation-for="BankAccount.BankName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" asp-for="BankAccount.RegNr">Registration number:</label>
+            <input class="form-control" type="number" asp-for="BankAccount.RegNr" />
+            <span asp-validation-for="BankAccount.RegNr" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" asp-for="BankAccount.CardNr">Card number:</label>
+            <input class="form-control" type="number" asp-for="BankAccount.CardNr" />
+            <span asp-validation-for="BankAccount.CardNr" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" asp-for="BankAccount.ExprDate">Expiration Date:</label>
+            <input class="form-control" type="date" asp-for="BankAccount.ExprDate" />
+            <span asp-validation-for="BankAccount.ExprDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" asp-for="BankAccount.PIN">PIN:</label>
+            <input class="form-control" type="number" asp-for="BankAccount.PIN" />
+            <span asp-validation-for="BankAccount.PIN" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <input type="submit" class="btn btn-success" value="Confirm" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <a asp-page="@AddBankAccountModel.returnPage" class="btn btn-outline-primary" value="Go back" />
+            </div>
+        </div>
+    </form>
+</div>

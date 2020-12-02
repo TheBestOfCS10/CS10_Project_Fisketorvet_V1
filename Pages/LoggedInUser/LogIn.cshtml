@@ -1,5 +1,5 @@
 ﻿@page "LogIn"
-@model CS10_Project_Fisketorvet_V1.Pages.Customer.LogInModel
+@model CS10_Project_Fisketorvet_V1.Pages.LoggedInUser.LogInModel
 @{
     ViewData["Title"] = "Log In";
    
@@ -25,7 +25,7 @@
                 <input type="submit" value="Log in" class="btn btn-primary" />
             </div>
             <div class="col-6">
-                <a asp-page="CreateCustomer" class="btn btn-outline-primary">Sign up</a>
+                <a asp-page="/Customer/CreateCustomer" class="btn btn-outline-primary">Sign up</a>
             </div>
         </div>
     </form>

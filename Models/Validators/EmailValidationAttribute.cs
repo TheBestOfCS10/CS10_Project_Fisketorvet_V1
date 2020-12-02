@@ -22,6 +22,10 @@ namespace CS10_Project_Fisketorvet_V1.Models.Validators
                 {
                     if (c.Email == email) return new ValidationResult("This email adress is already taken.");
                 }
+                foreach (Admin c in Admin.AdminCatalog.Values)
+                {
+                    if (c.Email == email) return new ValidationResult("This email adress is already taken.");
+                }
                 return ValidationResult.Success;
             }
             else

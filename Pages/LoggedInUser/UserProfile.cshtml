@@ -1,8 +1,26 @@
 ﻿@page "UserProfile"
-@model CS10_Project_Fisketorvet_V1.Pages.Shared.UserProfileModel
+@model CS10_Project_Fisketorvet_V1.Pages.LoggedInUser.UserProfileModel
 @{
     ViewData["Title"] = "UserProfile";
 }
-<a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@Shared.CurrentUser.User">Edit Profile</a>
+<a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User">Edit Profile</a>
 <p></p>
-<a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@Shared.CurrentUser.User">Delete Account</a>
+<a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@LoggedInUser.CurrentUser.User">Delete Account</a>
+<p></p>
+<div>
+    @{
+        if (LoggedInUser.CurrentUser.HasBankAccount)
+        {
+            <a class="btn btn-primary" asp-page="/Payment/RemoveBankAccount">Remove your bank account</a>
+            <p></p>
+            ;
+        }
+        else
+        {
+            <a class="btn btn-primary" asp-page="/Payment/AddBankAccount" asp-route-returnpage="/LoggedInUser/UserProfile">Add a bank account</a>
+            <p></p>
+            ;
+        }
+    }
+</div>
+<a class="btn btn-primary" asp-page="/LogOut">Log Out</a>
