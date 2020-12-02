@@ -6,14 +6,24 @@
 
 <div class="container">
     <div class="row justify-content-sm-center">
-        <div class="col-5">
-            <p>placeholder for search bar</p>
-        </div>
-        <div class="col-5">
-            <a asp-page="AddNewProduct" asp-route-storeId="@Model.StoreId" class="btn btn-primary">Add new product</a>
+        <h5 class="lead">Store administration for: @Model.Store.Name</h5>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col">
+            <p class="text-center">placeholder for search bar</p>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="col">
+            <p class="text-center">
+                <a asp-page="AddNewProduct" asp-route-storeId="@Model.StoreId" class="btn btn-primary btn-sm">Add new product</a>
+            </p>
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10 justify-content-center">
+
             <table class="table table-borderless">
                 <thead>
                     <tr>
@@ -24,16 +34,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var product in Model.Products)
-                    {
+                   @foreach (var product in Model.Products)
+                   {
                         <tr>
                             <td>@product.ProductId</td>
                             <td>@product.ProductName</td>
                             <td>@product.ProductDescription</td>
                             <td>@product.ProductPrice</td>
-                            <td>Edit</td>
+                            <td><a asp-page="EditProduct" asp-route-prodId="@product.ProductId" class="btn btn-primary btn-sm">Edit</a></td>
                             <td>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                @* Delete popup *@
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
                                     Delete item
                                 </button>
 
@@ -66,6 +77,7 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>

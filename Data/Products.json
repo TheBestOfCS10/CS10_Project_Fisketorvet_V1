@@ -3,9 +3,9 @@
     {
       "ProductId": 9,
       "StoreID": 1,
-      "ProductName": "Cat food, canned",
-      "ProductDescription": "Flavour: Tuna",
-      "ProductPrice": 8.0,
+      "ProductName": "Deluxe Cat food, canned",
+      "ProductDescription": "Flavour: Mouse",
+      "ProductPrice": 80.0,
       "ImagePath": "NoPicAvailable.png"
     },
     {
@@ -22,6 +22,14 @@
       "ProductName": "Cat food, canned",
       "ProductDescription": "Flavour: Tuna",
       "ProductPrice": 8.0,
+      "ImagePath": "NoPicAvailable.png"
+    },
+    {
+      "ProductId": 235,
+      "StoreID": 1,
+      "ProductName": "Tea, 100g",
+      "ProductDescription": "Fruit tea, loose",
+      "ProductPrice": 30.0,
       "ImagePath": "NoPicAvailable.png"
     }
   ]
