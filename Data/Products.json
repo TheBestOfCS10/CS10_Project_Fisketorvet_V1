@@ -17,19 +17,29 @@
       "ImagePath": "NoPicAvailable.png"
     },
     {
-      "ProductId": 234,
-      "StoreID": 1,
-      "ProductName": "Cat food, canned",
-      "ProductDescription": "Flavour: Tuna",
-      "ProductPrice": 8.0,
-      "ImagePath": "NoPicAvailable.png"
-    },
-    {
       "ProductId": 235,
       "StoreID": 1,
       "ProductName": "Tea, 100g",
       "ProductDescription": "Fruit tea, loose",
       "ProductPrice": 30.0,
+      "ImagePath": "NoPicAvailable.png"
+    }
+  ],
+  "2": [
+    {
+      "ProductId": 242,
+      "StoreID": 2,
+      "ProductName": "Pillow, GOLD45",
+      "ProductDescription": "Filled with goose feathers",
+      "ProductPrice": 680.0,
+      "ImagePath": "NoPicAvailable.png"
+    },
+    {
+      "ProductId": 243,
+      "StoreID": 2,
+      "ProductName": "Flying Carpet",
+      "ProductDescription": "persian",
+      "ProductPrice": 300000.0,
       "ImagePath": "NoPicAvailable.png"
     }
   ]

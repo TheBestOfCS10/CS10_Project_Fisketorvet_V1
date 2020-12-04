@@ -21,9 +21,13 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
         [BindProperty]
         public Product Product { get; set; }
 
-        public void OnGet(int prodId)
+        [BindProperty]
+        public int StoreId { get; set; }
+
+        public void OnGet(int prodId, int storeId)
         {
             Product = products.GetProduct(prodId);
+            StoreId = storeId;
         }
 
         public IActionResult OnPost()
@@ -31,9 +35,12 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
             if (ModelState.IsValid)
             {
                 products.UpdateProduct(Product);
-                return RedirectToPage($"ShowStore/{Product.StoreID}");
+                return Redirect($"/Stores/StoreProductAdmin/{StoreId}");
             }
+
             return Page();
         }
+
+        
     }
 }
