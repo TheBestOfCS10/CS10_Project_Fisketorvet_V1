@@ -9,34 +9,31 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CS10_Project_Fisketorvet_V1.Pages.Stores
 {
-    public class AddNewProductModel : PageModel
+    public class DeleteProductModel : PageModel
     {
         IProductRepository products;
 
-        public AddNewProductModel(IProductRepository prodRepo)
+        public DeleteProductModel(IProductRepository prodRepo)
         {
             products = prodRepo;
         }
 
         [BindProperty]
-        public Product NewProduct { get; set; }
+        public Product Product { get; set; }
 
+        [BindProperty]
+        public int StoreId { get; set; }
 
-        public IActionResult OnGet(int storeId)
+        public void OnGet(int prodId, int storeId)
         {
-            NewProduct = new Product() { StoreID = storeId };
-            return Page();
+            Product = products.GetProduct(prodId);
+            StoreId = storeId;
         }
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
-            {
-                products.AddNewProduct(NewProduct);
-                return Redirect($"/Stores/StoreProductAdmin/{NewProduct.StoreID}");
-            }
-            return Page();
-
+            products.DeleteProduct(Product.ProductId);
+            return Redirect($"/Stores/StoreProductAdmin/{StoreId}");
         }
     }
 }
