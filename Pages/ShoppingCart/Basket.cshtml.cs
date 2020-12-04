@@ -7,12 +7,13 @@ using CS10_Project_Fisketorvet_V1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
 
 namespace CS10_Project_Fisketorvet_V1.Pages
 {
     public class BasketModel : PageModel
     {
-        public List<Product> Product;
+
         private List<Product> BasketItems { get; set; }
         
         private static BasketModel _instance;
@@ -21,17 +22,28 @@ namespace CS10_Project_Fisketorvet_V1.Pages
         {
             get
             {
-                if ( _instance == null)
+                if (_instance == null)
                 {
                     _instance = new BasketModel();
                 }
-                return _instance;
+                return _instance; 
+            }   
+        }
+
+        public void OnGet()
+        {
+            if (HttpContext.Session.GetString("itemforbasket") != null)
+            {
+                //this is to extract the added items that are passed from the product page
+                BasketItems = JsonConvert.DeserializeObject<Product>(HttpContext.Session.GetString("itemforbasket"));
             }
         }
 
-        public void AddItem(Product Id)
+        
+
+        public void AddItem(Product ProductId)
         {
-            Product newItem = Id;
+            Product newItem = ProductId;
 
             if (BasketItems.Contains(newItem))
             {
@@ -56,17 +68,12 @@ namespace CS10_Project_Fisketorvet_V1.Pages
         }
 
 
-
-
-
-
-
-        public void SetItemQuantity(Product Id, int quantity)
+        public void SetItemQuantity(Product ProductId, int Quantity)
         {
-            Product updatedItem = Id;
-            if (quantity == 0)
+            Product updatedItem = ProductId;
+            if (Quantity == 0)
             {
-                BasketItems.Remove(Id);
+                BasketItems.Remove(ProductId);
                 return;
             }
             else
@@ -75,7 +82,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages
                 {
                     if (item == updatedItem)
                     {
-                        item.Quantity = quantity;
+                        item.Quantity = Quantity;
                         return;
 
                     }
@@ -83,9 +90,9 @@ namespace CS10_Project_Fisketorvet_V1.Pages
             }
         }
 
-        public void RemoveItem(Product Id)
+        public void RemoveItem(Product ProductId)
         {
-            Product itemsToRemove = Id;
+            Product itemsToRemove = ProductId;
             BasketItems.Remove(itemsToRemove);
         }
 
@@ -94,7 +101,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages
             double subtotal = 0;
             foreach (var item in BasketItems)
             {
-                _ = subtotal + item.Price;
+                _ = subtotal + item.ProductPrice;
             }
             return subtotal;
         }

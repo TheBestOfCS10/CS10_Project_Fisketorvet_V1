@@ -15,4 +15,7 @@
     <Folder Include="Pages\ShoppingCart\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Catalogs\ProductCatalog.cs" />
+  </ItemGroup>
 </Project>
