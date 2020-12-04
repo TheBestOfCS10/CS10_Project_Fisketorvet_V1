@@ -42,14 +42,20 @@
                             <a asp-page="" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" /></a>
                         </li>
                         <li class="list-inline-item m-0 p-0 border-0">
-                            @{ if (!CurrentUser.Exists)
+                            @{ if (!LoggedInUser.CurrentUser.Exists)
                                 {
-                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/Customer/LogIn"><img src="~/images/user-64.png" height="48" /></a>;
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/LogIn"><img src="~/images/user-64.png" height="48" /></a>;
+                                }
+                                else if (LoggedInUser.CurrentUser.User[1] == 1)
+                                {
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" />@Models.Admin.AdminCatalog[LoggedInUser.CurrentUser.User[0]].FirstName</a>
+
+                                    ;
                                 }
                                 else
                                 {
-                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" />@Models.Customer.Catalog[Shared.CurrentUser.User].FirstName</a>
-                                    
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" />@Models.Customer.Catalog[LoggedInUser.CurrentUser.User[0]].FirstName</a>
+
                                     ;
                                 }
                             }

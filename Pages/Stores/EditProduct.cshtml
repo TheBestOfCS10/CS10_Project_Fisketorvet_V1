@@ -1,0 +1,50 @@
+﻿@page "{prodId}"
+@model CS10_Project_Fisketorvet_V1.Pages.Stores.EditProductModel
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <h5 class="lead">Editing: @Model.Product.ProductName</h5>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <form method="post" class="form-group">
+                <div class="form-group">
+                    <label asp-for="@Model.Product.ProductName" class="col-form-label-sm">Name</label>
+                    <input asp-for="@Model.Product.ProductName" type="text" class="form-control" />
+                    <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Product.ProductDescription" class="col-form-label-sm">Description</label>
+                    <textarea asp-for="@Model.Product.ProductDescription" type="text" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Product.ProductPrice" class="col-form-label-sm">Price</label>
+                    <input asp-for="@Model.Product.ProductPrice" type="text" class="form-control" />
+                    <span asp-validation-for="Product.ProductPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Product.ImagePath" class="col-form-label-sm"></label>
+                    <input asp-for="@Model.Product.ImagePath" type="text" class="form-control" />
+                </div>
+
+                <input asp-for="@Model.Product.StoreID" type="hidden" />
+                <input asp-for="@Model.Product.ProductId" type="hidden" />
+                
+                <div class="row">
+                    <div class="col justify-content-start">
+                        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.StoreId" class="btn btn-outline-primary btn-sm">Back</a>
+                    </div>
+                    <div class="col justify-content-end text-right">
+                        <input type="submit" value="Confirm changes" class="btn btn-outline-primary btn-sm" />
+                    </div>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+
+</div>

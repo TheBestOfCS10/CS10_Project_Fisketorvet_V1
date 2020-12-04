@@ -12,10 +12,12 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
     public class StoreAdminModel : PageModel
     {
         IProductRepository products;
+        IStores stores;
 
-        public StoreAdminModel(IProductRepository prodRepo)
+        public StoreAdminModel(IProductRepository prodRepo, IStores storeRepo)
         {
             products = prodRepo;
+            stores = storeRepo;
         }
 
         public List<Product> Products { get; set; }
@@ -23,9 +25,12 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
         [BindProperty(SupportsGet =true)]
         public int StoreId { get; set; }
 
+        public Store Store { get; set; }
+
         public void OnGet(int storeId)
         {
             StoreId = storeId;
+            Store = stores.AllStores()[StoreId];
             Products = products.GetStoreProducts(storeId);
         }
 

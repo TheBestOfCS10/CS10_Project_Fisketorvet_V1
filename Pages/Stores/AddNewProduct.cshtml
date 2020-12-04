@@ -1,35 +1,72 @@
-﻿@page
+﻿@page "{storeId}"
 @model CS10_Project_Fisketorvet_V1.Pages.Stores.AddNewProductModel
 @{
     ViewData["Title"] = "New product";
 }
 
 <div class="container">
+    <div class="row justify-content-sm-center">
+        <h5 class="lead">Add a new product to your store</h5>
+    </div>
+
+    @if (ModelState.IsValid)
+    {
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteMadalLongTitle">Delete item</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>@Model.NewProduct.ProductName was added to your store.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.NewProduct.StoreID">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <form method="post" class="form-group">
-                <div class="form-check text-danger" asp-validation-summary="All"></div>
                 <div class="form-group">
-                    <label asp-for="@Model.NewProduct.ProductName" class="col-form-label">Name</label>
+                    <label asp-for="@Model.NewProduct.ProductName" class="col-form-label-sm">Name</label>
                     <input asp-for="@Model.NewProduct.ProductName" type="text" class="form-control" />
+                    <span asp-validation-for="@Model.NewProduct.ProductName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.NewProduct.ProductDescription" class="col-form-label">Description</label>
+                    <label asp-for="@Model.NewProduct.ProductDescription" class="col-form-label-sm">Description</label>
                     <textarea asp-for="@Model.NewProduct.ProductDescription" type="text" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.NewProduct.ProductPrice" class="col-form-label">Price</label>
+                    <label asp-for="@Model.NewProduct.ProductPrice" class="col-form-label-sm">Price</label>
                     <input asp-for="@Model.NewProduct.ProductPrice" type="text" class="form-control" />
+                    <span asp-validation-for="@Model.NewProduct.ProductPrice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.NewProduct.ImagePath" class="col-form-label"></label>
+                    <label asp-for="@Model.NewProduct.ImagePath" class="col-form-label-sm"></label>
                     <input asp-for="@Model.NewProduct.ImagePath" type="text" class="form-control" />
                 </div>
 
                 <input asp-for="@Model.NewProduct.StoreID" type="hidden" />
 
-                <input type="submit" value="Add item to catalog" class="btn btn-outline-primary" />
+                <div class="row">
+                    <div class="col justify-content-start">
+                        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.NewProduct.StoreID" class="btn btn-outline-primary btn-sm">Back</a>
+                    </div>
+                    <div class="col justify-content-end text-right">
+                        <input type="submit" value="Add item to catalog" class="btn btn-outline-primary btn-sm" />
+                    </div>
+                </div>
+
+
             </form>
+
         </div>
     </div>
 

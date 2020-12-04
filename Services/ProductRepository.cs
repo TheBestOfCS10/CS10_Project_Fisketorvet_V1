@@ -135,14 +135,21 @@ namespace CS10_Project_Fisketorvet_V1.Services
         /// </summary>
         public void UpdateProduct(Product product)
         {
-            foreach (var p in GetAllProducts())
+            ProductCatalog = JsonFileHelper<Dictionary<int, List<Product>>>.ReadJsonSingle(jsonFilePath);
+
+            foreach (var p in ProductCatalog[product.StoreID])
             {
                 if (p.ProductId == product.ProductId)
                 {
-                    product = p;
+                    p.ProductName = product.ProductName;
+                    p.ProductDescription = product.ProductDescription;
+                    p.ProductPrice = product.ProductPrice;
+                    p.ImagePath = product.ImagePath;
                 }
             }
-            //not done yet
+
+            JsonFileHelper<Dictionary<int, List<Product>>>.WriteToJsonSingle(ProductCatalog, jsonFilePath);
+
         }
 
         

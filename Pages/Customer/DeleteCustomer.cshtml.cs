@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CS10_Project_Fisketorvet_V1.Pages.LoggedInUser;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,7 +13,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         [BindProperty]
         static Models.Customer Customer
         {
-            get;set;
+            get; set;
         }
         public IActionResult OnGet(int id)
         {
@@ -23,9 +24,9 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         {
             if (delete)
             {
-                if (Customer.ID == Shared.CurrentUser.User)
+                if (Customer.ID == CurrentUser.User[0])
                 {
-                    Shared.CurrentUser.LogOut();
+                    CurrentUser.LogOut();
                 }
                 Models.Customer.Delete(Customer.ID);
                 return RedirectToPage("/Index");

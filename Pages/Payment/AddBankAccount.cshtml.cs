@@ -4,24 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using CS10_Project_Fisketorvet_V1.Models;
 
-namespace CS10_Project_Fisketorvet_V1.Pages.Customer
+namespace CS10_Project_Fisketorvet_V1.Pages.Payment
 {
-    public class CreateCustomerModel : PageModel
+    public class AddBankAccountModel : PageModel
     {
         [BindProperty]
-        public Models.Customer Customer
+        public BankAccount BankAccount
         {
             get; set;
         }
-        [BindProperty]
-        public string ConfirmPassword
+        public static string returnPage;
+        public void OnGet(string returnpage)
         {
-            get; set;
-        }
-        public IActionResult OnGet()
-        {
-            return Page();
+            returnPage = returnpage;
         }
         public IActionResult OnPost()
         {
@@ -29,8 +26,8 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
             {
                 return Page();
             }
-            Models.Customer.Create(Customer);
-            return RedirectToPage("/Index");
+            BankAccount.Add(BankAccount, LoggedInUser.CurrentUser.User);
+            return RedirectToPage(returnPage);
         }
     }
 }

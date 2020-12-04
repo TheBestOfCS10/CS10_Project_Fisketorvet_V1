@@ -15,6 +15,10 @@ namespace CS10_Project_Fisketorvet_V1.Models.Validators
             {
                 if (attributes[0] == c.Email && attributes[1] == c.Password) return true;
             }
+            foreach (Admin c in Admin.AdminCatalog.Values)
+            {
+                if (attributes[0] == c.Email && attributes[1] == c.Password) return true;
+            }
             return false;
         }
     }
