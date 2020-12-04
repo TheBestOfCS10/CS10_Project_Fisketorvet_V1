@@ -4,16 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using CS10_Project_Fisketorvet_V1.Interfaces;
 using CS10_Project_Fisketorvet_V1.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
+
 
 namespace CS10_Project_Fisketorvet_V1.Pages
 {
     public class BasketModel : PageModel
     {
-
         private List<Product> BasketItems { get; set; }
         
         private static BasketModel _instance;
@@ -29,17 +27,6 @@ namespace CS10_Project_Fisketorvet_V1.Pages
                 return _instance; 
             }   
         }
-
-        public void OnGet()
-        {
-            if (HttpContext.Session.GetString("itemforbasket") != null)
-            {
-                //this is to extract the added items that are passed from the product page
-                BasketItems = JsonConvert.DeserializeObject<Product>(HttpContext.Session.GetString("itemforbasket"));
-            }
-        }
-
-        
 
         public void AddItem(Product ProductId)
         {
