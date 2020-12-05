@@ -12,9 +12,9 @@ namespace CS10_Project_Fisketorvet_V1.Pages
 {
     public class BasketModel : PageModel
     {
-        private List<Product> BasketItems { get; set; }
-        
         private static BasketModel _instance;
+
+
 
         public static BasketModel Instance
         {
@@ -28,72 +28,19 @@ namespace CS10_Project_Fisketorvet_V1.Pages
             }   
         }
 
-        public void AddItem(Product ProductId)
+        public IActionResult OnGet()
         {
-            Product newItem = ProductId;
-
-            if (BasketItems.Contains(newItem))
-            {
-                foreach (var item in BasketItems)
-                {
-                    if (item == newItem)
-                    {
-                        item.Quantity++;
-                        return;
-                    }
-                    else
-                    {
-                        newItem.Quantity = 1;
-                        BasketItems.Add(newItem);
-
-                    }
-
-                }
-
-            }
-
+            return Page();
         }
 
-
-        public void SetItemQuantity(Product ProductId, int Quantity)
-        {
-            Product updatedItem = ProductId;
-            if (Quantity == 0)
-            {
-                BasketItems.Remove(ProductId);
-                return;
-            }
-            else
-            {
-                foreach (var item in BasketItems)
-                {
-                    if (item == updatedItem)
-                    {
-                        item.Quantity = Quantity;
-                        return;
-
-                    }
-                }
-            }
-        }
-
-        public void RemoveItem(Product ProductId)
-        {
-            Product itemsToRemove = ProductId;
-            BasketItems.Remove(itemsToRemove);
-        }
-
-        public double CalculateItemsTotalPrice()
-        {
-            double subtotal = 0;
-            foreach (var item in BasketItems)
-            {
-                _ = subtotal + item.ProductPrice;
-            }
-            return subtotal;
-        }
-
-
-
+        //public double CalculateItemsTotalPrice()
+        //{
+        //    double subtotal = 0;
+        //    foreach (var item in BasketItems)
+        //    {
+        //        _ = subtotal + item.ProductPrice;
+        //    }
+        //    return subtotal;
+        //}
     }
 }

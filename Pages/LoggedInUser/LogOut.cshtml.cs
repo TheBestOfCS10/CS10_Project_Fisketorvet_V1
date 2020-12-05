@@ -12,7 +12,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
         public IActionResult OnGet()
         {
             CurrentUser.LogOut();
-            return RedirectToPage("/UserProfile");
+            return RedirectToPage("/Index");
         }
     }
 }

@@ -23,11 +23,27 @@
                                 <p style="text-align: right">@p.ProductPrice kr.</p>
                             </li>
                             <li class="row justify-content-end m-0">
-                                <a href="#" class="card-link">Add to basket</a>
+                                @{
+                                    if (LoggedInUser.CurrentUser.Exists)
+                                    {
+                                        <form  method="post">
+                                            <input type="submit" class="btn btn-primary" asp-page-handler="add" asp-route-p="@p.ProductId" value="Add to basket" />
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form method="post">
+                                            <input type="submit" class="btn btn-primary" asp-route-p="@p.ProductId" value="Add to basket" />
+                                            @{ if (p.ProductId == ShowStoreModel.checkedproductid)
+                                               {
+                                                 <span asp-validation-for="@Model.NonExistentUser" class="text-danger"></span>;
+                                               }
+                                            }
+                                        </form>
+                                    }
+                                }
                             </li>
                         </ul>
-                        
-
                     </div>
                 </div>
             </div>

@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Pages\Administration\" />
     <Folder Include="wwwroot\images\" />
-    <Folder Include="Pages\ShoppingCart\" />
   </ItemGroup>
 
   <ItemGroup>
