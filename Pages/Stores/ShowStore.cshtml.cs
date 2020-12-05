@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using CS10_Project_Fisketorvet_V1.Interfaces;
@@ -14,7 +15,14 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
     {
         IProductRepository products;
         IStores stores;
-        
+        [BindProperty]
+        [Required(ErrorMessage = "You must be logged in to add to the basket")]
+        public int NonExistentUser
+        {
+            get;set;
+        }
+        static int storeid;
+        public static int checkedproductid;
         public Store Store { get; set; }
         public List<Product> Products { get; set; }
 
@@ -28,7 +36,25 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Stores
         {
             Store = stores.AllStores()[storeId];
             Products = products.GetStoreProducts(storeId);
-
+            storeid = storeId;
+            return Page();
+        }
+        public IActionResult OnPost(int p)
+        {
+            if (!ModelState.IsValid)
+            {
+                Store = stores.AllStores()[storeid];
+                Products = products.GetStoreProducts(storeid);
+                checkedproductid = p;
+                return Page();
+            }
+            return Page();
+        }
+        public IActionResult OnPostAdd(int p)
+        {
+            Store = stores.AllStores()[storeid];
+            Products = products.GetStoreProducts(storeid);
+            ShoppingCart.BasketHelper.AddToBasket(p, 1);
             return Page();
         }
     }

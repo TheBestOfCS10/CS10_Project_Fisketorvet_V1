@@ -36,13 +36,33 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
         {
             get
             {
-                if (User[1] == 1)
+                if (Exists)
                 {
-                    return Models.Admin.AdminCatalog[User[0]].Account != null;
+                    if (User[1] == 1)
+                    {
+                        return Models.Admin.AdminCatalog[User[0]].Account != null;
+                    }
+                    else return Models.Customer.Catalog[User[0]].Account != null;
                 }
-                else return Models.Customer.Catalog[User[0]].Account != null;
+                else return false;
             }
         }
+        static public bool HasBasket
+        {
+            get
+            {
+                if (Exists)
+                {
+                    if (User[1] == 1)
+                    {
+                        return false;
+                    }
+                    else return Models.Customer.Catalog[User[0]].BasketID != 0;
+                }
+                else return false;
+            }
+        }
+
         static public void ChangeUser(Models.Customer user, bool remainloggedin)
         {
             bool isAdmin = false;
@@ -77,6 +97,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
         static public void LogOut()
         {
             User[0] = 0;
+            User[1] = 0;
             Helpers.JsonFileHelper<int[]>.WriteToJsonSingle(User, JsonFileName);
         }
     }

@@ -10,6 +10,9 @@ namespace CS10_Project_Fisketorvet_V1.Models
 {
     public class Product
     {
+        const string JsonProducts = @"Data/Products.json";
+        public static Dictionary<int, List<Product>> ProductCatalog = Helpers.JsonFileHelper<List<Product>>.ReadJson(JsonProducts);
+
         public int ProductId { get; set; }
         public int StoreID { get; set; }
 
@@ -24,6 +27,18 @@ namespace CS10_Project_Fisketorvet_V1.Models
         public double ProductPrice { get; set; }
 
         public string ImagePath { get; set; }
-        public int Quantity { get; set; }
+        
+        public static Product GetProduct(int id, Dictionary<int, List<Product>> catalog)
+        {
+            for (int i = 1; i <= catalog.Count; i++)
+            {
+                List<Product> list = catalog[i];
+                foreach (Product p in list)
+                {
+                    if (p.ProductId == id) return p;
+                }
+            }
+            return null;
+        }
     }
 }

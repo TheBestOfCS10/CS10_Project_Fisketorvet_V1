@@ -13,6 +13,7 @@ namespace CS10_Project_Fisketorvet_V1
     {
         public static void Main(string[] args)
         {
+            Pages.LoggedInUser.CurrentUser currentUser = new Pages.LoggedInUser.CurrentUser();
             CreateHostBuilder(args).Build().Run();
         }
 
