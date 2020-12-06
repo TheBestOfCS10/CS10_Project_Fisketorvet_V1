@@ -19,12 +19,38 @@
                             <td>@item.ImagePath</td>
                             <td>@item.ProductName</td>
                             <td>@item.ProductPrice kr</td>
-                            <td>@i[1]</td>
+                            <td>
+                                <div class="form-inline">
+                                    <div>
+                                        <form method="post">
+                                            <input type="submit" value="-" class="btn btn-dark" asp-page-handler="minus" asp-route-p="@item.ProductId" />
+                                        </form>
+                                    </div>
+                                    <div class="ml-1 mr-1">@i[1]</div>
+                                    <div>
+                                        <form method="post">
+                                            <input type="submit" value="+" class="btn btn-dark" asp-page-handler="plus" asp-route-p="@item.ProductId" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="submit" value="X" class="btn btn-danger" asp-page-handler="remove" asp-route-p="@item.ProductId"/>
+                                </form>
+                            </td>
                         </tr>
                         }
                     </tbody>
                 </table>
              </div>
+            <div class="row">
+                <div>
+                    Total price:
+                    <br />
+                    @BasketModel.CalculateItemsTotalPrice() kr
+                </div>
+            </div>
         </div>
         ;
     }

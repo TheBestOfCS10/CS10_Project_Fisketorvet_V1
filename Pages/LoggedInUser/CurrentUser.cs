@@ -57,7 +57,8 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
                     {
                         return false;
                     }
-                    else return Models.Customer.Catalog[User[0]].BasketID != 0;
+                    else if (Models.Customer.Catalog[User[0]].BasketID != 0) return Models.Basket.GetBasket(Models.Customer.Catalog[User[0]].BasketID).Items.Count != 0;
+                    else return false;
                 }
                 else return false;
             }

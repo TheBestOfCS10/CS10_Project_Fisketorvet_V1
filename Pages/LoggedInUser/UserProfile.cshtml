@@ -3,9 +3,9 @@
 @{
     ViewData["Title"] = "UserProfile";
 }
-<a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User">Edit Profile</a>
+<a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
 <p></p>
-<a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@LoggedInUser.CurrentUser.User">Delete Account</a>
+<a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Delete Account</a>
 <p></p>
 <div>
     @{
