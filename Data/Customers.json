@@ -1,3 +1,17 @@
 {
-
+  "1": {
+    "ID": 1,
+    "FirstName": "Adumitroaei",
+    "LastName": "Radu",
+    "Password": "123456",
+    "ConfirmPassword": "123456",
+    "Passwords": [
+      "123456",
+      "123456"
+    ],
+    "Email": "radueugen84@yahoo.com",
+    "CustomerGender": 0,
+    "Account": null,
+    "BasketID": 2
+  }
 }

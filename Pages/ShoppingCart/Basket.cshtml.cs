@@ -6,6 +6,7 @@ using CS10_Project_Fisketorvet_V1.Interfaces;
 using CS10_Project_Fisketorvet_V1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using CS10_Project_Fisketorvet_V1.Models;
 
 
 namespace CS10_Project_Fisketorvet_V1.Pages
@@ -32,15 +33,35 @@ namespace CS10_Project_Fisketorvet_V1.Pages
         {
             return Page();
         }
+        public IActionResult OnPostRemove(int p)
+        {
+            ShoppingCart.BasketHelper.RemoveFromBasket(p);
+            return Page();
+        }
+        public IActionResult OnPostSave(int p)
+        {
+            ShoppingCart.BasketHelper.ChangeQuantity(p, 1);
+            return Page();
+        }
+        public IActionResult OnPostPlus(int p)
+        {
+            ShoppingCart.BasketHelper.AddToBasket(p, 1);
+            return Page();
+        }
+        public IActionResult OnPostMinus(int p)
+        {
 
-        //public double CalculateItemsTotalPrice()
-        //{
-        //    double subtotal = 0;
-        //    foreach (var item in BasketItems)
-        //    {
-        //        _ = subtotal + item.ProductPrice;
-        //    }
-        //    return subtotal;
-        //}
+            ShoppingCart.BasketHelper.AddToBasket(p, -1);
+            return Page();
+        }
+        public static double CalculateItemsTotalPrice()
+        {
+            double subtotal = 0;
+            foreach (int[] p in Basket.GetBasket(Models.Customer.Catalog[LoggedInUser.CurrentUser.User[0]].BasketID).Items)
+            {
+                subtotal = subtotal + (Models.Product.GetProduct(p[0], Models.Product.ProductCatalog).ProductPrice*p[1]);
+            }
+            return subtotal;
+        }
     }
 }

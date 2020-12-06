@@ -46,25 +46,42 @@ namespace CS10_Project_Fisketorvet_V1.Models
         }
         public void Add(int id, int quantity)
         {
-            int[] newarray = new int[2] { id, quantity };
-            if (Items.Count==0)
+            if (quantity > 0)
             {
+                int[] newarray = new int[2] { id, quantity };
+                if (Items.Count == 0)
+                {
+                    Items.Add(newarray);
+                    UpdateCatalog();
+                    return;
+                }
+                foreach (int[] i in Items)
+                {
+                    if (i[0] == id)
+                    {
+                        i[1] += quantity;
+                        UpdateCatalog();
+                        return;
+                    }
+                }
                 Items.Add(newarray);
                 UpdateCatalog();
                 return;
             }
-            foreach(int[] i in Items)
+            else if(quantity<0)
             {
-                if(i[0] == id)
+                if (Items.Count == 0) return;
+                foreach (int[] i in Items)
                 {
-                    i[1] += quantity;
-                    UpdateCatalog();
-                    return;
+                    if (i[0] == id)
+                    {
+                        i[1] += quantity;
+                        if (i[1] <= 0) Remove(id);
+                        UpdateCatalog();
+                        return;
+                    }
                 }
             }
-            Items.Add(newarray);
-            UpdateCatalog();
-            return;
         }
         public void ChangeQuantity(int id, int quantity)
         {
