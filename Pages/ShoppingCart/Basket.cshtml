@@ -45,10 +45,26 @@
                 </table>
              </div>
             <div class="row">
-                <div>
+                <div class="col-6">
                     Total price:
                     <br />
                     @BasketModel.CalculateItemsTotalPrice() kr
+                </div>
+                <div class="col-6">
+                    @{ if (LoggedInUser.CurrentUser.HasBankAccount)
+                        {
+                            <form method="post">
+                                <input type="submit" asp-page-handler="checkout" value="Continue to payment" class="btn btn-success" />
+                            </form>
+                        }
+                        else
+                        {
+                            <form method="post">
+                                <input type="submit" asp-page-handler="fail" value="Continue to payment" class="btn btn-success" />
+                                <span asp-validation-for="@Model.NoBankAccountChecker" class="text-danger"></span>
+                            </form>
+                        }
+                    }
                 </div>
             </div>
         </div>
