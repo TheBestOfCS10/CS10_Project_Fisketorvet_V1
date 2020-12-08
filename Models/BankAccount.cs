@@ -9,7 +9,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
     public class BankAccount
     {
         static Random rng = new Random();
-        public int Balance
+        public double Balance
         {
             get; set;
         }
@@ -67,6 +67,17 @@ namespace CS10_Project_Fisketorvet_V1.Models
                 Customer.Catalog[user[0]].Account = null;
                 Helpers.JsonFileHelper<Customer>.WriteToJson(Customer.Catalog, Customer.JsonCustomers);
             }
+        }
+        public void Pay(double amount)
+        {
+            if (CanPay(amount))
+                Balance -= amount;
+            else return;
+        }
+        public bool CanPay(double amount)
+        {
+            if (Balance >= amount) return true;
+            else return false;
         }
     }
 }

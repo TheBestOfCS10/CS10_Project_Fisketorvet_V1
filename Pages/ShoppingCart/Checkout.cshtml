@@ -1,0 +1,63 @@
+﻿@page "Checkout"
+@model CS10_Project_Fisketorvet_V1.Pages.ShoppingCart.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+    int nr = BasketModel.CalculateItemsNr();
+    double price = BasketModel.CalculateItemsTotalPrice();
+    double total = @CheckoutModel.CalculateTotalPrice(price, 10);
+}
+@{ if (CheckoutModel.CompletedTransaction)
+    {
+        <span>Your order has been placed</span>
+        <br />
+        <span>Thank you for your purchase!</span>
+    }
+    else if (CheckoutModel.InsuficientFunds)
+    {
+        <span>It seems that you do not have the required funds to complete this transaction</span>
+    }
+    else
+    {
+    <div>
+        <form method="post">
+            <div>
+                You are about to purchase @nr @{if (nr > 1)
+                    { <span>items</span>}
+                    else
+                    { <span>item</span>}
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ZIP" class="control-label">ZIP:</label>
+                <input asp-for="@Model.ZIP" type="number" class="form-control" />
+                <span asp-validation-for="@Model.ZIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Street" class="control-label">Street:</label>
+                <input asp-for="@Model.Street" type="text" class="form-control" />
+                <span asp-validation-for="@Model.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.StreetNR" class="control-label">StreetNR:</label>
+                <input asp-for="@Model.StreetNR" type="text" class="form-control" />
+                <span asp-validation-for="@Model.StreetNR" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    Items price: @price kr
+                    <br>
+                    Discount: 10% (Members' club)
+                    <br>
+                    Total: @total kr
+                </div>
+                <div class="col-3">
+                    <input type="submit" class="btn btn-success" value="Place order" asp-route-amount="@total"/>
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </form>
+    </div>
+    }
+}
