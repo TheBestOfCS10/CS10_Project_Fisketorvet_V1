@@ -5,28 +5,48 @@
    
 }
 
-<div>
-    <form method="post">
-        <div class="form-group">
-            <label class="control-label" asp-for="CurrentUser[0]">Email:</label>
-            <input class="form-control" type="email" asp-for="CurrentUser[0]" />
-        </div>
-        <div class="form-group">
-            <label class="control-label" asp-for="CurrentUser[1]">Password:</label>
-            <input class="form-control" type="text" asp-for="CurrentUser[1]" />
-            <span asp-validation-for="CurrentUser" class="text-danger"></span>
-        </div>
-        <div class="form-check">
-            <input asp-for="RemainLoggedIn" type="checkbox" id="checkbox"/>
-            <label for="checkbox">Remember me</label>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <input type="submit" value="Log in" class="btn btn-primary" />
+<div class="container">
+    <div class="row justify-content-center pt-2">
+        <div class="col-sm-4 py-4 login-box" >
+            <div class="text-center"><h5>Login</h5></div>
+            
+            <div>
+                <form method="post">
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="CurrentUser[0]">Email:</label>
+                        <input class="form-control" type="email" asp-for="CurrentUser[0]" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="CurrentUser[1]">Password:</label>
+                        <input class="form-control" type="text" asp-for="CurrentUser[1]" />
+                        <span asp-validation-for="CurrentUser" class="text-danger"></span>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="RemainLoggedIn" type="checkbox" id="checkbox" class="custom-control-input" />
+                        <label for="checkbox" class="custom-control-label">Remember me</label>
+                    </div>
+
+                <div class="row">
+                    <div class="col mt-3 text-center">
+                        <input type="submit" value="Log in" class="btn btn-dark text-light" />
+                    </div>
+                </div>
+                    <div class="row justify-content-center">
+                        <div class="col text-center">
+                            <span><hr/>You are not registered yet? Sign-up now:</span>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col text-center">
+                            <a asp-page="/Customer/CreateCustomer" class="btn btn-outline-dark">Sign up</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="col-6">
-                <a asp-page="/Customer/CreateCustomer" class="btn btn-outline-primary">Sign up</a>
-            </div>
         </div>
-    </form>
+    </div>
 </div>
+
+
+
+
