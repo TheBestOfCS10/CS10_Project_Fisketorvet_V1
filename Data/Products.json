@@ -6,8 +6,7 @@
       "ProductName": "Deluxe Cat food, canned",
       "ProductDescription": "Flavour: Mouse",
       "ProductPrice": 80.0,
-      "ImagePath": "NoPicAvailable.png",
-      "Quantity": 0
+      "ImagePath": "NoPicAvailable.png"
     },
     {
       "ProductId": 4,
@@ -15,8 +14,7 @@
       "ProductName": "Cat food, canned",
       "ProductDescription": "Flavour: Tuna",
       "ProductPrice": 8.0,
-      "ImagePath": "NoPicAvailable.png",
-      "Quantity": 0
+      "ImagePath": "NoPicAvailable.png"
     },
     {
       "ProductId": 235,
@@ -24,17 +22,15 @@
       "ProductName": "Tea, 100g",
       "ProductDescription": "Fruit tea, loose",
       "ProductPrice": 30.0,
-      "ImagePath": "NoPicAvailable.png",
-      "Quantity": 0
+      "ImagePath": "NoPicAvailable.png"
     },
     {
-      "ProductId": 244,
+      "ProductId": 245,
       "StoreID": 1,
-      "ProductName": "New",
-      "ProductDescription": "123",
-      "ProductPrice": 123.0,
-      "ImagePath": "none",
-      "Quantity": 0
+      "ProductName": "beer",
+      "ProductDescription": "beer",
+      "ProductPrice": 10.0,
+      "ImagePath": "carlsberg_beercan.jpg"
     }
   ],
   "2": [
@@ -44,8 +40,7 @@
       "ProductName": "Pillow, GOLD45",
       "ProductDescription": "Filled with goose feathers",
       "ProductPrice": 680.0,
-      "ImagePath": "NoPicAvailable.png",
-      "Quantity": 0
+      "ImagePath": "NoPicAvailable.png"
     },
     {
       "ProductId": 243,
@@ -53,8 +48,7 @@
       "ProductName": "Flying Carpet",
       "ProductDescription": "persian",
       "ProductPrice": 300000.0,
-      "ImagePath": "NoPicAvailable.png",
-      "Quantity": 0
+      "ImagePath": "NoPicAvailable.png"
     }
   ]
 }

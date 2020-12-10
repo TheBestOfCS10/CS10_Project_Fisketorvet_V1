@@ -15,16 +15,17 @@
             <div class="row">
                 <div class="col-sm-4 d-flex">
 
-                    <form class="form-inline align-self-center"> @*method to be determined*@
+                    <form class="form-inline align-self-center">
+                        @*method to be determined*@
                         <div class="input-group">
 
                             <div class="input-group-prepend">
-                                <span class="input-group-text">
+                                <span class="input-group-text searchbar-custom">
                                     <span class="iconify" data-icon="fa:search" data-inline="false"></span>
                                 </span>
                             </div>
                             @*propery binding here with asp-for helper tag*@
-                            <input type="text" class="form-control" placeholder="Search" >
+                            <input type="text" class="form-control searchbar-custom" placeholder="Search">
 
                         </div>
                     </form>
@@ -39,16 +40,16 @@
                     <ul class="list-inline list-unstyled m-0 pb-1 border-0 align-self-center">
 
                         <li class="list-inline-item m-0 p-0 border-0">
-                            <a asp-page="/ShoppingCart/Basket" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" /></a>
+                            <a asp-page="/ShoppingCart/Basket" class="nav-link text-dark font-small font-weight-light py-0 px-2"><img src="~/images/bag-64.png" height="48" style="opacity: 0.6" /></a>
                         </li>
                         <li class="list-inline-item m-0 p-0 border-0">
                             @{ if (!LoggedInUser.CurrentUser.Exists)
                                 {
-                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/LogIn"><img src="~/images/user-64.png" height="48" /></a>;
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/LogIn"><img src="~/images/user-64.png" height="48" style="opacity: 0.6" /></a>;
                                 }
                                 else if (LoggedInUser.CurrentUser.User[1] == 1)
                                 {
-                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" />@Models.Admin.AdminCatalog[LoggedInUser.CurrentUser.User[0]].FirstName</a>
+                                    <a class="nav-link text-dark font-small font-weight-light py-0 px-2" asp-page="/LoggedInUser/UserProfile"><img src="~/images/user-64.png" height="48" style="opacity: 0.6" />@Models.Admin.AdminCatalog[LoggedInUser.CurrentUser.User[0]].FirstName</a>
 
                                     ;
                                 }
@@ -63,11 +64,12 @@
                     </ul>
                 </div>
             </div>
-            
+
 
 
         </div>
-        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 bg-white py-0">
+
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 py-1">
             <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -78,20 +80,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     @*Navbar content here*@
                     <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
-                        <li class="nav-item px-1">
+                        <li class="nav-item px-3">
                             <a class="nav-link text-dark py-1" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item px-1">
+                        <li class="nav-item px-2">
                             <a class="nav-link text-dark py-1" asp-area="" asp-page="/Stores/stores">Stores</a>
                         </li>
 
-                        <li class="nav-item px-1">
+                        <li class="nav-item px-3">
                             <a class="nav-link text-dark py-1" asp-area="" asp-page="">Restaurants</a>
                         </li>
-                        <li class="nav-item px-1">
+                        <li class="nav-item px-2">
                             <a class="nav-link text-dark py-1" asp-area="" asp-page="">Entertainment</a>
                         </li>
-                        <li class="nav-item px-1">
+                        <li class="nav-item px-3">
 
                             <div class="dropdown nav-item">
                                 <button class="nav-link text-dark py-1 m-0 border-0 bg-white" id="infoMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,6 +112,7 @@
                 </div>
             </div>
         </nav>
+
     </header>
 
     <div class="container">
@@ -135,105 +138,104 @@
             </a>
         </div>
 
-        <div class="container text-center text-md-left">
-            @*Footer content here*@
-            <div class="row">
-                <div class="col-md-4 mx-auto">
-                    <h5 class="text-uppercase mt-3 mb-4">Fisketorvet</h5>
-                    <p>
-                        <table class="table-borderless font-small">
-                            <tr>
-                            <td><h6><a id="openingHours">Opening hours:</a></h6></td>
-                            </tr>
-                            <tr>
-                            <td>Monday - Sunday</td>
-                            </tr>
-                            <tr>
-                            <td>10:00 - 20:00</td>
-                            </tr>
-                            <tr><th><br /></th></tr>
-                            <tr>
-                            <td><h6>Address:</h6></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    FISKETORVET<br />
-                                    Havneholmen 5<br />
-                                    1561 København V<br />
-                                </td>
-                            </tr>
+        <div class="container-fluid text-center justify-content-center text-md-left bg-secondary">
+            <div class="container text-center text-md-left text-light">
+                @*Footer content here*@
+                <div class="row">
 
-                        </table>
-                    </p>
-                </div>
+                    <div class="col-md-4 mx-auto text-center text-md-left">
+                        <h5 class="text-uppercase mt-3 mb-4">Fisketorvet</h5>
+                        <ul class="list-unstyled text-light">
+                            <li>
+                                <h6><a id="openingHours">Opening hours:</a></h6>
+                            </li>
+                            <li>
+                                Monday - Sunday
+                            </li>
+                            <li>
+                                10:00 - 20:00
+                            </li>
+                            <li>
+                                <p></p>
+                            </li>
+                            <li>
+                                <h6>Address:</h6>
+                            </li>
+                            <li>
+                                FISKETORVET<br/>
+                                Havneholmen 5<br/>
+                                1561 København V<br/>
+                            </li>
 
-                <hr class="clearfix w-100 d-md-none">
-                <div class="col-md-2 mx-auto">
-                    <h6 class="font-weight mt-3 mb-4">For visitors</h6>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a asp-page="/Index">Home</a>
-                        </li>
-                        <li>
-                            <a href="#!">About</a>
-                        </li>
-                        <li>
-                            <a href="/Stores/stores">Stores</a>
-                        </li>
-                        <li>
-                            <a href="#!">Restaurants</a>
-                        </li>
-                        <li>
-                            <a href="#!">Services</a>
-                        </li>
-                        <li>
-                            <a asp-page="/Information/CenterMap">Center map</a>
-                        </li>
-                        <li>
-                            <a href="#!">Parking</a>
-                        </li>
-                    </ul>
-                </div>
+                        </ul>
 
-                <hr class="clearfix w-100 d-md-none">
+                    </div>
 
-                <div class="col-md-2 mx-auto">
-                    <h6 class="font-weighte mt-3 mb-4">For business</h6>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Become partner</a>
-                        </li>
-                        <li>
-                            <a href="#!">Rent</a>
-                        </li>
-                        <li>
-                            <a href="#!">Advertise</a>
-                        </li>
-                    </ul>
-                </div>
+                    <hr class="clearfix w-100 d-md-none">
+                    <div class="col-md-2 mx-auto">
+                        <h6 class="font-weight mt-3 mb-4">For visitors</h6>
+                        <ul class="list-unstyled text-light">
+                            <li>
+                                <a asp-page="/Index" class="text-light">Home</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">About</a>
+                            </li>
+                            <li>
+                                <a href="/Stores/stores" class="text-light">Stores</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Restaurants</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Services</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Information/CenterMap" class="text-light">Center map</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Parking</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <hr class="clearfix w-100 d-md-none">
+                    <hr class="clearfix w-100 d-md-none">
 
-                <div class="col-md-2 mx-auto">
-                    <h6 class="font-weight mt-3 mb-4">Follow us</h6>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Facebook</a>
-                        </li>
-                        <li>
-                            <a href="#!">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="#!">YouTube</a>
-                        </li>
-                    </ul>
+                    <div class="col-md-2 mx-auto">
+                        <h6 class="font-weighte mt-3 mb-4">For business</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-light">Become partner</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Rent</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Advertise</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <div class="col-md-2 mx-auto">
+                        <h6 class="font-weight mt-3 mb-4">Follow us</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-light">Facebook</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">Instagram</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-light">YouTube</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <hr>
-
-        <div class="footer-copyright text-center py-3">
+        <div class="footer-copyright text-center py-3 bg-dark">
             © 2020 Copyright: 2020 - CS10_Project_Fisketorvet_V1
 
         </div>
