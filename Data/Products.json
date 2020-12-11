@@ -3,18 +3,18 @@
     {
       "ProductId": 9,
       "StoreID": 1,
-      "ProductName": "Deluxe Cat food, canned",
-      "ProductDescription": "Flavour: Mouse",
+      "ProductName": "Coffee",
+      "ProductDescription": "Instant coffee",
       "ProductPrice": 80.0,
-      "ImagePath": "NoPicAvailable.png"
+      "ImagePath": "coffee.jpg"
     },
     {
       "ProductId": 4,
       "StoreID": 1,
-      "ProductName": "Cat food, canned",
-      "ProductDescription": "Flavour: Tuna",
-      "ProductPrice": 8.0,
-      "ImagePath": "NoPicAvailable.png"
+      "ProductName": "Oranges",
+      "ProductDescription": "Spanish oranges",
+      "ProductPrice": 25.0,
+      "ImagePath": "oranges.jpg"
     },
     {
       "ProductId": 235,
@@ -27,10 +27,18 @@
     {
       "ProductId": 245,
       "StoreID": 1,
-      "ProductName": "beer",
-      "ProductDescription": "beer",
+      "ProductName": "Beer",
+      "ProductDescription": "from Copenhagen",
       "ProductPrice": 10.0,
       "ImagePath": "carlsberg_beercan.jpg"
+    },
+    {
+      "ProductId": 246,
+      "StoreID": 1,
+      "ProductName": "Den Gamle Fabrik",
+      "ProductDescription": "Jam",
+      "ProductPrice": 22.0,
+      "ImagePath": "jam.jpg"
     }
   ],
   "2": [
@@ -40,15 +48,15 @@
       "ProductName": "Pillow, GOLD45",
       "ProductDescription": "Filled with goose feathers",
       "ProductPrice": 680.0,
-      "ImagePath": "NoPicAvailable.png"
+      "ImagePath": "pillow.jpg"
     },
     {
       "ProductId": 243,
       "StoreID": 2,
       "ProductName": "Flying Carpet",
-      "ProductDescription": "persian",
+      "ProductDescription": null,
       "ProductPrice": 300000.0,
-      "ImagePath": "NoPicAvailable.png"
+      "ImagePath": "carpet.jpg"
     }
   ]
 }
