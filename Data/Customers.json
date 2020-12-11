@@ -1,3 +1,17 @@
 {
-  
+  "1": {
+    "ID": 1,
+    "FirstName": "Niko",
+    "LastName": "Dojan",
+    "Password": "123456",
+    "ConfirmPassword": "123456",
+    "Passwords": [
+      "123456",
+      "123456"
+    ],
+    "Email": "nikodojan@live.de",
+    "CustomerGender": 0,
+    "Account": null,
+    "BasketID": 0
+  }
 }
