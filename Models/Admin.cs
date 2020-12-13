@@ -43,8 +43,6 @@ namespace CS10_Project_Fisketorvet_V1.Models
             a.FirstName = c.FirstName;
             a.LastName = c.LastName;
             a.Password = c.Password;
-            a.ConfirmPassword = c.ConfirmPassword;
-            a.Passwords = c.Passwords;
             a.Email = c.Email;
             a.CustomerGender = c.CustomerGender;
             return a;

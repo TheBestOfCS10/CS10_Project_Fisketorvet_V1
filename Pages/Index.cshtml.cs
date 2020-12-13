@@ -19,7 +19,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages
 
         public IActionResult OnGet()
         {
-            if (LoggedInUser.CurrentUser.User[1]==1) return RedirectToPage("AdminHomePage");
+            if (LoggedInUser.CurrentUser.User[1]==1) return RedirectToPage("Administration/AdminHomePage");
             return Page();
         }
     }

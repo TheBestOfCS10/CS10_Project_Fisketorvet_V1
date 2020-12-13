@@ -9,9 +9,9 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
 {
     public class UserProfileModel : PageModel
     {
-        
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Page();
         }
     }
 }

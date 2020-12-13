@@ -1,15 +1,10 @@
 {
   "1": {
     "ID": 1,
-    "FirstName": "Niko",
-    "LastName": "Dojan",
-    "Password": "123456",
-    "ConfirmPassword": "123456",
-    "Passwords": [
-      "123456",
-      "123456"
-    ],
-    "Email": "nikodojan@live.de",
+    "FirstName": "Adumitroaei",
+    "LastName": "Radu",
+    "Password": "AQAAAAEAACcQAAAAEBsVJ6/EmzcZR/V64cdf/KYI5KahfvieoY58twslzTv2aRL6JyvR6pZXHku1mgmTmw==",
+    "Email": "radueugen84@yahoo.com",
     "CustomerGender": 0,
     "Account": null,
     "BasketID": 0

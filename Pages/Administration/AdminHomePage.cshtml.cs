@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CS10_Project_Fisketorvet_V1.Pages
+namespace CS10_Project_Fisketorvet_V1.Pages.Administration
 {
     public class AdminHomePageModel : PageModel
     {

@@ -12,7 +12,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
         int _id;
         string _firstname;
         string _lastname;
-        string[] _passwords = new string[2];
+        string _password;
         string _email;
         BankAccount _account;
         int _basketid;
@@ -42,26 +42,26 @@ namespace CS10_Project_Fisketorvet_V1.Models
             get { return _lastname; }
             set { _lastname = value; }
         }
-        [Required(ErrorMessage = "The password is required")]
-        [MaxLength(20, ErrorMessage = "The password must be maximum 20 characters long")]
-        [MinLength(6, ErrorMessage ="The password must be at least 6 characters long")]
+        //[Required(ErrorMessage = "The password is required")]
+        //[MaxLength(20, ErrorMessage = "The password must be maximum 20 characters long")]
+        //[MinLength(6, ErrorMessage ="The password must be at least 6 characters long")]
         public string Password
         {
-            get { return _passwords[0]; }
-            set { _passwords[0] = value; }
+            get { return _password; }
+            set { _password = value; }
         }
-        [Required(ErrorMessage = "Your need to confirm your password")]
-        public string ConfirmPassword
-        {
-            get { return _passwords[1]; }
-            set { _passwords[1] = value; }
-        }
-        [Validators.ConfirmPassword(ErrorMessage = "The passwords do not match")]
-        public string[] Passwords
-        {
-            get { return _passwords; }
-            set { _passwords = value; }
-        }
+        //[Required(ErrorMessage = "Your need to confirm your password")]
+        //public string ConfirmPassword
+        //{
+        //    get { return _passwords[1]; }
+        //    set { _passwords[1] = value; }
+        //}
+        //[Validators.ConfirmPassword(ErrorMessage = "The passwords do not match")]
+        //public string[] Passwords
+        //{
+        //    get { return _passwords; }
+        //    set { _passwords = value; }
+        //}
         [Required(ErrorMessage = "The email is required")]
         [Validators.EmailValidation(false, ErrorMessage ="This email is already taken")]
         [EmailAddress(ErrorMessage ="This is not a valid email adress")]
