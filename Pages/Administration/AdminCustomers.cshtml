@@ -1,0 +1,48 @@
+﻿@page "AdminCustomers"
+@model CS10_Project_Fisketorvet_V1.Pages.Administration.AdminCustomersModel
+@{
+    ViewData["Title"] = "AdminCustomers";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <table class="col-10 table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Bank account</th>
+                    <th>
+                        <a class="btn btn-success" asp-page="/Customer/CreateCustomer" asp-route-returnpage="/Administration/AdminCustomers">Create a new account</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                @foreach(Models.Customer c in Models.Customer.Catalog.Values)
+                {
+                <tr>
+                    <td>@c.ID</td>
+                    <td>@c.FirstName @c.LastName</td>
+                    <td>@c.Email</td>
+                    <td>@c.CustomerGender</td>
+                    <td>
+                        @if (c.Account != null) { <span>Yes</span>}
+                        else { <span>No</span>}
+                    </td>
+                    <td>
+                        <a class="btn btn-dark" asp-page="/Customer/EditCustomer" asp-route-id="@c.ID" asp-route-returnpage="/Administration/AdminCustomers">Edit</a>
+                        <a class="btn btn-danger" asp-page="/Customer/DeleteCustomer" asp-route-id="@c.ID" asp-route-returnpage="/Administration/AdminCustomers">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>
