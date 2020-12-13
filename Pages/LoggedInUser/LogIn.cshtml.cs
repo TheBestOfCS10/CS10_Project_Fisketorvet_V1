@@ -36,10 +36,10 @@ namespace CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
             NewUser.Email = CurrentUser[0];
             NewUser.Password = CurrentUser[1];
             LoggedInUser.CurrentUser.ChangeUser(NewUser, RemainLoggedIn);
-            foreach (Models.Admin a in Models.Admin.AdminCatalog.Values)
-            {
-                if (a.Email == CurrentUser[0]) return RedirectToPage("/AdminHomepage");
-            }
+            //foreach (Models.Admin a in Models.Admin.AdminCatalog.Values)
+            //{
+            //    if (a.Email == CurrentUser[0]) return RedirectToPage("/AdminHomepage");
+            //}
             return RedirectToPage("/Index");
         }
     }

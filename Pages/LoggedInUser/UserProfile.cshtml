@@ -6,34 +6,53 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-
+        <div class="col-3">
+            <img src="" alt="ProfilePicture">
         </div>
-        <div class="col">
-
-        </div>
-        <div class="col">
-            <a class="btn btn-primary" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
-            <p></p>
-            <a class="btn btn-primary" asp-page="/Customer/DeleteCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Delete Account</a>
-            <p></p>
-            <div>
-                @{
-                    if (LoggedInUser.CurrentUser.HasBankAccount)
-                    {
-                        <a class="btn btn-primary" asp-page="/Payment/RemoveBankAccount">Remove your bank account</a>
-                        <p></p>
-                        ;
-                    }
-                    else
-                    {
-                        <a class="btn btn-primary" asp-page="/Payment/AddBankAccount" asp-route-returnpage="/LoggedInUser/UserProfile">Add a bank account</a>
-                        <p></p>
-                        ;
-                    }
-                }
+        <div class="col-9">
+            @{Models.Customer user = Models.Customer.Search(LoggedInUser.CurrentUser.User[0]);}
+            <div class="row">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>@user.FirstName @user.LastName</td>
+                        </tr>
+                        @{
+                            if (LoggedInUser.CurrentUser.User[1] == 1)
+                            {
+                                <tr>
+                                    <td>
+                                        @Models.Admin.Search(LoggedInUser.CurrentUser.User[0]).Access
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        <tr>
+                            <td>@user.CustomerGender</td>
+                        </tr>
+                        <tr>
+                            @{
+                                if (LoggedInUser.CurrentUser.HasBankAccount)
+                                {
+                                    <td>You have linked a bank account</td>
+                                }
+                                else
+                                {
+                                    <td>You don't have a linked bank account</td>
+                                }
+                            }
+                            </tr>
+                        </tbody>
+                </table>
             </div>
-            <a class="btn btn-primary" asp-page="/LoggedInUser/LogOut">Log Out</a>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-dark" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
+            <p></p>
+            <a class="btn btn-outline-dark" asp-page="/LoggedInUser/LogOut">Log Out</a>
         </div>
     </div>
 </div>
