@@ -12,6 +12,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
     public class CreateCustomerModel : PageModel
     {
         public static bool InvalidPasswords;
+        public static string ReturnPage;
         [BindProperty]
         public Models.Customer Customer
         {
@@ -31,13 +32,15 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         {
             get; set;
         }
-        public IActionResult OnGet()
+        public IActionResult OnGet(string returnpage)
         {
+            if (returnpage!=null) ReturnPage = returnpage;
             InvalidPasswords = false;
             return Page();
         }
         public IActionResult OnPost()
         {
+            if (ReturnPage == null) ReturnPage = "/Index";
             if (Password1 != Password2) InvalidPasswords = true;
             else if (Password1 == Password2) InvalidPasswords = false;
             if (!ModelState.IsValid)
@@ -51,7 +54,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
             PasswordHasher<Models.Customer> hasher = new PasswordHasher<Models.Customer>();
             Customer.Password = hasher.HashPassword(Customer, Password1);
             Models.Customer.Create(Customer);
-            return RedirectToPage("/Index");
+            return RedirectToPage(ReturnPage);
         }
     }
 }

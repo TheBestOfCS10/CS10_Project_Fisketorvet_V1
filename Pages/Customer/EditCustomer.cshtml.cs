@@ -13,6 +13,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         string _firstname;
         string _lastname;
         Models.Customer.Gender _gender;
+        static public string ReturnPage;
         public static Models.Customer Customer
         {
             get; set;
@@ -35,8 +36,9 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
             get { return _gender; }
             set { _gender = value; }
         }
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int id, string returnpage)
         {
+            if (returnpage != null) ReturnPage = returnpage;
             Customer = Models.Customer.Search(id);
             FirstName = Customer.FirstName;
             LastName = Customer.LastName;
@@ -45,6 +47,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         }
         public IActionResult OnPost()
         {
+            if (ReturnPage == null) ReturnPage = "/LoggedInUser/UserProfile";
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -53,7 +56,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
             Customer.LastName = LastName;
             Customer.CustomerGender = CustomerGender;
             Models.Customer.Update(Customer);
-            return RedirectToPage("/LoggedInUser/UserProfile");
+            return RedirectToPage(ReturnPage);
         }
     }
 }
