@@ -5,49 +5,84 @@
 }
 
 
-<div>
-    <form method="post">
-        <div class="form-group">
-            <label class="control-label" asp-for="Customer.FirstName">First Name:</label>
-            <input class="form-control" type="text" asp-for="Customer.FirstName" />
-            <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center pt-2">
+        <div class="col-lg-4 col-md-6 col-sm-8 py-4 pr-md-4 pr-sm-3">
+            <h5>Sign up for our membership program!</h5>
+            <p class="lead">And enjoy many advantages:</p>
+            <table class="table table-borderless">
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>24/7 Shopping on our online platform</td>
+                </tr>
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>Get notified about offers</td>
+                </tr>
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>10% discount on all payments with the Fisketorvet Card</td>
+                </tr>
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>4 hours free parking during your visit at Fisketorvet (instead of 2 hours)</td>
+                </tr>
+            </table>
         </div>
-        <div class="form-group">
-            <label class="control-label" asp-for="Customer.LastName">Last Name:</label>
-            <input class="form-control" type="text" asp-for="Customer.LastName" />
-            <span asp-validation-for="Customer.LastName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" asp-for="Customer.Email">Email:</label>
-            <input class="form-control" type="email" asp-for="Customer.Email" />
-            <span asp-validation-for="Customer.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" asp-for="@Model.Password1">Password:</label>
-            <input class="form-control" type="text" asp-for="@Model.Password1" />
-            <span asp-validation-for="@Model.Password1" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" asp-for="@Model.Password2">Confirm Password:</label>
-            <input class="form-control" type="text" asp-for="@Model.Password2" />
-            <span asp-validation-for="@Model.Password2" class="text-danger"></span>
-            @{ if (CreateCustomerModel.InvalidPasswords)
-                    {
-            <span class="text-danger">The passwords do not match</span>
-                    }
-             }
-        </div>
-        <div class="form-group">
-            <select asp-for="Customer.CustomerGender" required>
-                <option disabled selected>Select your gender...</option>
-                <option asp-route-gender="@Models.Customer.Gender.Male">Male</option>
-                <option asp-route-gender="@Models.Customer.Gender.Female">Female</option>
-            </select>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <input type="submit" class="btn btn-primary" value="Sign Up" />
+
+        <div class="col-lg-4 col-md-6 col-sm-8 py-4 login-box">
+            <div class="text-center"><h5>Sign up</h5>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Customer.FirstName">First Name:</label>
+                        <input class="form-control" type="text" asp-for="Customer.FirstName"/>
+                        <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Customer.LastName">Last Name:</label>
+                        <input class="form-control" type="text" asp-for="Customer.LastName"/>
+                        <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Customer.Email">Email:</label>
+                        <input class="form-control" type="email" asp-for="Customer.Email"/>
+                        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.Password1">Password:</label>
+                        <input class="form-control" type="text" asp-for="@Model.Password1"/>
+                        <span asp-validation-for="@Model.Password1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.Password2">Confirm Password:</label>
+                        <input class="form-control" type="text" asp-for="@Model.Password2"/>
+                        <span asp-validation-for="@Model.Password2" class="text-danger"></span>
+                        @{
+                            if (CreateCustomerModel.InvalidPasswords)
+                            {
+                                <span class="text-danger">The passwords do not match</span>
+                            }
+                        }
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="Customer.CustomerGender" required class="form-control">
+                            <option disabled selected>Select your gender...</option>
+                            <option asp-route-gender="@Models.Customer.Gender.Male">Male</option>
+                            <option asp-route-gender="@Models.Customer.Gender.Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <input type="submit" class="btn btn-dark text-ligh" value="Sign Up"/>
+                            <a class="btn btn-outline-dark" asp-page="/LoggedInUser/LogIn">Back</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
+

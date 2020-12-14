@@ -29,7 +29,6 @@
         <div class="col-sm-2 text-center">
             <img src="~/images/@Model.Store.ImageName" style="max-height: 110px"/>
         </div>
-
     </div>
 
     <hr/>
@@ -43,7 +42,18 @@
                         <div class="d-flex justify-content-center my-2">
                             <img src="/images/@p.ImagePath" style="max-height: 110px;"/>
                         </div>
-                        <p class="card-text mb-2">@p.ProductDescription</p>
+                        <p class="card-text font-weight-light mb-2">
+                            @if (!string.IsNullOrEmpty(p.ProductDescription))
+                            {
+                                @p.ProductDescription
+                            }
+                            else
+                            {
+                                <span>&nbsp;
+                                </span>
+                            }
+                            
+                        </p>
                         <ul class="m-0 p-1">
                             <li class="row justify-content-start m-0 pb-0">
                                 <p style="text-align: right" class="mb-0">@p.ProductPrice kr.</p>
