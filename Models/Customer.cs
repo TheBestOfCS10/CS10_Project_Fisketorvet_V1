@@ -114,6 +114,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
                     c.Email = customer.Email;
                     c.CustomerGender = customer.CustomerGender;
                     Helpers.JsonFileHelper<Customer>.WriteToJson(Catalog, JsonCustomers);
+                    break;
                 }
             }
         }

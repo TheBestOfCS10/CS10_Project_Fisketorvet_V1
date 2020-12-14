@@ -1,4 +1,41 @@
-﻿@page
+﻿@page "AdminOrders"
 @model CS10_Project_Fisketorvet_V1.Pages.Administration.AdminOrdersModel
 @{
+    ViewData["Title"] = "AdminOrders";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <table class="col-10 table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Owner</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                @foreach (Models.Order c in Models.Order.Catalog.Values)
+                {
+                    <tr>
+                        <td>@c.ID</td>
+                        <td>@Models.Customer.Search(c.OwnerID).FirstName @Models.Customer.Search(c.OwnerID).LastName</td>
+                        <td>@c.Date.ToString("dd-MM-yyyy")</td>
+                        <td>@c.Price</td>
+                        <td>
+                            <a class="btn btn-dark" asp-page="/Administration/Order/EditOrder" asp-route-id="@c.ID" >Edit</a>
+                            <a class="btn btn-danger" asp-page="/Administration/Order/DeleteOrder" asp-route-id="@c.ID" >Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>

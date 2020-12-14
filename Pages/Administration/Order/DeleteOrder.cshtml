@@ -1,0 +1,12 @@
+﻿@page "DeleteOrder"
+@model CS10_Project_Fisketorvet_V1.Pages.Administration.Order.DeleteOrderModel
+@{
+    ViewData["Title"] = "DeleteOrder";
+}
+Are you sure you wish to delete this order?
+<div class="container-fluid pt-3 row">
+    <form method="post">
+        <input class="btn btn-danger" type="submit" value="Delete" asp-route-delete="true" />
+        <input class="btn btn-outline-primary" type="submit" value="Go back" asp-route-delete="false" />
+    </form>
+</div>
