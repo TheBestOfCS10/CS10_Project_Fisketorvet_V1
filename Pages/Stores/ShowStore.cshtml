@@ -1,10 +1,24 @@
 ﻿@page 
+@using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments
+@using CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
 @model CS10_Project_Fisketorvet_V1.Pages.Stores.ShowStoreModel
 @{
     ViewData["Title"] = $"{Model.Store.Name}";
 }
 
 <div class="container">
+    <div class="row pb-3">
+        <div class="col px-2" >
+            <a asp-page="Stores" class="text-dark font-weight-normal"><span class="iconify pb-1" data-icon="ic:baseline-arrow-back-ios-new" data-inline="false"></span>Back to stores</a>
+        </div>
+        <div class="col text-right">
+            @if (CurrentUser.User[1] == 1)
+            {
+                <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.Store.Id" class="btn btn-dark">Product administration</a>
+            }
+        </div>
+
+    </div>
     <div class="row">
         <div class="col-md-3 col-sm-12">
             <h5>Welcome to @Model.Store.Name</h5>
@@ -13,7 +27,7 @@
             <p>@Model.Store.Description</p>
         </div>
         <div class="col-sm-2 text-center">
-            <img src="~/images/@Model.Store.ImageName"  style="max-height: 110px"/>
+            <img src="~/images/@Model.Store.ImageName" style="max-height: 110px"/>
         </div>
 
     </div>
@@ -45,17 +59,17 @@
                                     }
                                     else
                                     {
-                            <form method="post">
-                                @*<span class="iconify" data-icon="emojione-monotone:shopping-cart" data-inline="false"></span>
-                                <input type="submit" class="btn border-0" asp-route-p="@p.ProductId" value="Add to basket" />*@
-                                <button type="submit" class="btn btn-lg border-0 p-0 mb-2 mr-3" asp-route-p="@p.ProductId"><span class="iconify" data-icon="emojione-monotone:shopping-cart" data-inline="false"></span></button>
-                                @{
-                                    if (p.ProductId == ShowStoreModel.checkedproductid)
-                                    {
-                                        <span asp-validation-for="@Model.NonExistentUser" class="text-danger"></span>;
-                                    }
-                                }
-                            </form>
+                                        <form method="post">
+                                            @*<span class="iconify" data-icon="emojione-monotone:shopping-cart" data-inline="false"></span>
+                                                <input type="submit" class="btn border-0" asp-route-p="@p.ProductId" value="Add to basket" />*@
+                                            <button type="submit" class="btn btn-lg border-0 p-0 mb-2 mr-3" asp-route-p="@p.ProductId"><span class="iconify" data-icon="emojione-monotone:shopping-cart" data-inline="false"></span></button>
+                                            @{
+                                                if (p.ProductId == ShowStoreModel.checkedproductid)
+                                                {
+                                                    <span asp-validation-for="@Model.NonExistentUser" class="text-danger"></span>;
+                                                }
+                                            }
+                                        </form>
                                     }
                                 }
                             </li>
@@ -65,12 +79,7 @@
             </div>
         }
     </div>
-    <div class="bg-warning border-danger">
-        <p>
-            This button should not be seen for visitors, only for store administrator<br/>
-            It is here for testing purposes
-            <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.Store.Id" class="btn btn-primary">Store admin</a>
-        </p>
-    </div>
+
+
 
 </div>
