@@ -116,6 +116,7 @@ namespace CS10_Project_Fisketorvet_V1.Models
         public void ClearBasket()
         {
             Items.Clear();
+            Helpers.JsonFileHelper<Basket>.WriteToJson(Catalog, JsonBaskets);
         }
         public static void UpdateCatalog()
         {

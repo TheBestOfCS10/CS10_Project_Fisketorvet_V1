@@ -9,7 +9,7 @@
         <div class="col-3">
             <img src="" alt="ProfilePicture">
         </div>
-        <div class="col-9">
+        <div class="col-8">
             @{Models.Customer user = Models.Customer.Search(LoggedInUser.CurrentUser.User[0]);}
             <div class="row">
                 <table class="table table-borderless">
@@ -46,6 +46,9 @@
                 </table>
             </div>
             
+        </div>
+        <div class="col-1">
+            <a class="btn btn-dark" asp-page="OrderHistory">My orders</a>
         </div>
     </div>
     <div class="row">
