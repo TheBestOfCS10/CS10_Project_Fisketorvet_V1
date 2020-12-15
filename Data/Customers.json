@@ -25,5 +25,22 @@
     "CustomerGender": 1,
     "Account": null,
     "BasketID": 0
+  },
+  "3": {
+    "ID": 3,
+    "FirstName": "Niko",
+    "LastName": "Dojan",
+    "Password": "AQAAAAEAACcQAAAAEEXvqiup3YojUv7GKBGsPziF26JSddEjoK+duFswQ2BEGiJzvt+iGh4WXjCqsN1WVw==",
+    "Email": "nikodojan@live.de",
+    "CustomerGender": 0,
+    "Account": {
+      "Balance": 2830.0,
+      "CardNr": 987654321,
+      "RegNr": 123,
+      "ExprDate": "2020-12-30T00:00:00",
+      "PIN": 1234,
+      "BankName": "Royal Bank"
+    },
+    "BasketID": 3
   }
 }

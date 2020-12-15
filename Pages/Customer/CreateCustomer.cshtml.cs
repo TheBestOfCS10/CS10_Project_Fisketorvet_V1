@@ -40,7 +40,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.Customer
         }
         public IActionResult OnPost()
         {
-            if (ReturnPage == null) ReturnPage = "/Index";
+            if (ReturnPage == null) ReturnPage = "/LoggedInUser/Login";
             if (Password1 != Password2) InvalidPasswords = true;
             else if (Password1 == Password2) InvalidPasswords = false;
             if (!ModelState.IsValid)
