@@ -5,57 +5,97 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="col-3">
-            <img src="" alt="ProfilePicture">
-        </div>
-        <div class="col-8">
-            @{Models.Customer user = Models.Customer.Search(LoggedInUser.CurrentUser.User[0]);}
-            <div class="row">
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>@user.FirstName @user.LastName</td>
+    @{Models.Customer user = Models.Customer.Search(LoggedInUser.CurrentUser.User[0]);}
+
+
+    <div class="row pt-3">
+        <div class="col col-sm-3"><img src="" alt="ProfilePicture"></div>
+        <div class="col">
+            <h5>Hi, @user.FirstName! Welcome to your profile!</h5>
+            <table class="table table-borderless table-sm">
+
+
+                <tbody>
+                <tr class="table-light border-bottom p-0">
+                    <td style="width: 40%" class="p-0">
+                        <h6 class="pt-2 pl-2">Personal data</h6>
+                    </td>
+                    <td class="text-right" style="width: 60%">
+                        <a class="text-dark font-weight-light mr-2" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>@user.FirstName @user.LastName</td>
+                </tr>
+                <tr>
+                    <td>
+                        Address:
+                    </td>
+                    <td>Street and housenumber<br/>ZIP City</td>
+                </tr>
+                <tr >
+                    <td>
+                        Gender:
+                    </td>
+                    <td>@user.CustomerGender</td>
+                </tr>
+                <tr><td><br/></td></tr>
+
+                @{
+                    if (LoggedInUser.CurrentUser.User[1] == 1)
+                    {
+
+                        <tr class="border-bottom">
+                            <td style="width: 33%">Status:</td>
+                            <td style="width: 67%">
+                                @Models.Admin.Search(LoggedInUser.CurrentUser.User[0]).Access
+                            </td>
                         </tr>
+                    }
+                }
+
+                <tr class="table-light table p-0 border-bottom">
+                    <td class="p-0"><h6 class="pt-2 pl-2">Payment methods:</h6></td>
+                    <td class="text-right">
                         @{
-                            if (LoggedInUser.CurrentUser.User[1] == 1)
+                            if (LoggedInUser.CurrentUser.HasBankAccount)
                             {
-                                <tr>
-                                    <td>
-                                        @Models.Admin.Search(LoggedInUser.CurrentUser.User[0]).Access
-                                    </td>
-                                </tr>
+                                <a class="text-dark font-weight-light mr-2" asp-page="/Payment/RemoveBankAccount">Remove your bank account</a>
+                            }
+                            else
+                            {
+                                <a class="text-dark font-weight-light mr-2" asp-page="/Payment/AddBankAccount" asp-route-returnpage="/LoggedInUser/UserProfile">Add a bank account</a>
                             }
                         }
-                        <tr>
-                            <td>@user.CustomerGender</td>
-                        </tr>
-                        <tr>
-                            @{
-                                if (LoggedInUser.CurrentUser.HasBankAccount)
-                                {
-                                    <td>You have linked a bank account</td>
-                                }
-                                else
-                                {
-                                    <td>You don't have a linked bank account</td>
-                                }
-                            }
-                            </tr>
-                        </tbody>
-                </table>
+                    </td>
+                </tr>
+                <tr>
+                    @{
+                        if (LoggedInUser.CurrentUser.HasBankAccount)
+                        {
+                            <td class="py-2">You have linked a bank account</td>
+                        }
+                        else
+                        {
+                            <td class="py-2">You don't have a linked bank account</td>
+                        }
+                    }
+                </tr>
+                </tbody>
+            </table>
+            <div class="col-1">
+                <a class="btn btn-dark" asp-page="OrderHistory">My orders</a>
             </div>
-            
-        </div>
-        <div class="col-1">
-            <a class="btn btn-dark" asp-page="OrderHistory">My orders</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <a class="btn btn-dark" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
-            <p></p>
-            <a class="btn btn-outline-dark" asp-page="/LoggedInUser/LogOut">Log Out</a>
+            <div class="row pt-3">
+                <div class="col-10">
+                    <a class="btn btn-dark" asp-page="/Customer/EditCustomer" asp-route-id="@LoggedInUser.CurrentUser.User[0]">Edit Profile</a>
+                    <a class="btn btn-outline-dark" asp-page="/LoggedInUser/LogOut">Log Out</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

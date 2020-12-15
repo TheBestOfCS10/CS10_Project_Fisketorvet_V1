@@ -1,4 +1,5 @@
 ﻿@page "Basket"
+@using CS10_Project_Fisketorvet_V1.Pages.LoggedInUser
 @model CS10_Project_Fisketorvet_V1.Pages.BasketModel
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -9,62 +10,89 @@
     if (LoggedInUser.CurrentUser.Exists && LoggedInUser.CurrentUser.HasBasket)
     {
         <div class="container">
-            <div class="row">
-                <table class="table col-12">
-                    <tbody>
+            <div class="row py-3 justify-content-center">
+                
+                <div class="col-10"><h5 class="font-weight-normal">@Models.Customer.Catalog[CurrentUser.User[0]].FirstName's Basket </h5></div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <table class="table mb-0">
+                        <thead>
+                        <tr class="table-light">
+                            <th></th>
+                            <th>Product</th>
+                            <th class="text-right">Price</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Remove</th>
+                        </tr>
+
+
+                        </thead>
+                        <tbody>
+
                         @foreach (int[] i in Models.Basket.Catalog[Models.Customer.Catalog[LoggedInUser.CurrentUser.User[0]].BasketID].Items)
                         {
                             Models.Product item = Models.Product.GetProduct(i[0], Models.Product.ProductCatalog);
+                            <tr>
+                                <td><img src="/images/@item.ImagePath" style="max-width: 48px; max-height: 48px;"/></td>
+                                <td>@item.ProductName</td>
+                                <td class="text-right">@item.ProductPrice kr</td>
+                                <td class="text-center">
+                                    <div class="form-inline justify-content-center">
+                                        <div>
+                                            <form method="post">
+                                                <input type="submit" value="-" class="btn btn-light btn-sm" asp-page-handler="minus" asp-route-p="@item.ProductId"/>
+                                            </form>
+                                        </div>
+                                        <div class="mx-3">@i[1]</div>
+                                        <div>
+                                            <form method="post">
+                                                <input type="submit" value="+" class="btn btn-light btn-sm" asp-page-handler="plus" asp-route-p="@item.ProductId"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <form method="post">
+                                        <input type="submit" value="X" class="btn btn-outline-danger btn-sm" asp-page-handler="remove" asp-route-p="@item.ProductId"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
                         <tr>
-                            <td>@item.ImagePath</td>
-                            <td>@item.ProductName</td>
-                            <td>@item.ProductPrice kr</td>
-                            <td>
-                                <div class="form-inline">
-                                    <div>
-                                        <form method="post">
-                                            <input type="submit" value="-" class="btn btn-dark" asp-page-handler="minus" asp-route-p="@item.ProductId" />
-                                        </form>
-                                    </div>
-                                    <div class="ml-1 mr-1">@i[1]</div>
-                                    <div>
-                                        <form method="post">
-                                            <input type="submit" value="+" class="btn btn-dark" asp-page-handler="plus" asp-route-p="@item.ProductId" />
-                                        </form>
-                                    </div>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">
+                                <div class="font-weight-bold">
+                                    Total price:
+                                    <br/>
+                                    @BasketModel.CalculateItemsTotalPrice() kr
                                 </div>
                             </td>
-                            <td>
-                                <form method="post">
-                                    <input type="submit" value="X" class="btn btn-danger" asp-page-handler="remove" asp-route-p="@item.ProductId"/>
-                                </form>
-                            </td>
+                            <td></td>
+                            <td></td>
                         </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="row justify-content-center justify-content-sm-end pr-5">
+                        @{
+                            if (LoggedInUser.CurrentUser.HasBankAccount)
+                            {
+                                <form method="post">
+                                    <input type="submit" asp-page-handler="checkout" value="Proceed to payment" class="btn btn-secondary" />
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post">
+                                    <input type="submit" asp-page-handler="fail" value="Proceed to payment" class="btn btn-secondary" />
+                                    <span asp-validation-for="@Model.NoBankAccountChecker" class="text-danger"></span>
+                                </form>
+                            }
                         }
-                    </tbody>
-                </table>
-             </div>
-            <div class="row">
-                <div class="col-6">
-                    Total price:
-                    <br />
-                    @BasketModel.CalculateItemsTotalPrice() kr
-                </div>
-                <div class="col-6">
-                    @{ if (LoggedInUser.CurrentUser.HasBankAccount)
-                        {
-                            <form method="post">
-                                <input type="submit" asp-page-handler="checkout" value="Continue to payment" class="btn btn-success" />
-                            </form>
-                        }
-                        else
-                        {
-                            <form method="post">
-                                <input type="submit" asp-page-handler="fail" value="Continue to payment" class="btn btn-success" />
-                                <span asp-validation-for="@Model.NoBankAccountChecker" class="text-danger"></span>
-                            </form>
-                        }
-                    }
+
+                    </div>
                 </div>
             </div>
         </div>
