@@ -10,40 +10,48 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-sm-8">
+            
+            
+
             <form method="post" class="form-group">
                 <div class="form-group">
-                    <label asp-for="@Model.Product.ProductName" class="col-form-label-sm">Name</label>
-                    <input asp-for="@Model.Product.ProductName" type="text" class="form-control" />
+                    <label asp-for="@Model.Product.ProductName" class="col-form-label-sm mb-0">Name:</label>
+                    <input asp-for="@Model.Product.ProductName" type="text" class="form-control"/>
                     <span asp-validation-for="Product.ProductName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.Product.ProductDescription" class="col-form-label-sm">Description</label>
+                    <label asp-for="@Model.Product.ProductDescription" class="col-form-label-sm mb-0">Description:</label>
                     <textarea asp-for="@Model.Product.ProductDescription" type="text" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.Product.ProductPrice" class="col-form-label-sm">Price</label>
-                    <input asp-for="@Model.Product.ProductPrice" type="text" class="form-control" />
+                    <label asp-for="@Model.Product.ProductPrice" class="col-form-label-sm mb-0">Price:</label>
+                    <input asp-for="@Model.Product.ProductPrice" type="text" class="form-control"/>
                     <span asp-validation-for="Product.ProductPrice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.Product.ImagePath" class="col-form-label-sm"></label>
-                    <input asp-for="@Model.Product.ImagePath" type="text" class="form-control" />
+                    <div class="row justify-content-left">
+                        <div class="col-auto">
+                            <img src="/images/@Model.Product.ImagePath" style="max-height: 110px;"/>
+                        </div>
+                        <div class="col">
+                            <label asp-for="@Model.Product.ImagePath" class="col-form-label-sm mb-0">Image Path:</label>
+                            <input asp-for="@Model.Product.ImagePath" type="text" class="form-control" />
+                        </div>
+                    </div>
                 </div>
 
-                <input asp-for="@Model.Product.StoreID" type="hidden" />
-                <input asp-for="@Model.Product.ProductId" type="hidden" />
-                
+                <input asp-for="@Model.Product.StoreID" type="hidden"/>
+                <input asp-for="@Model.Product.ProductId" type="hidden"/>
+
                 <div class="row">
                     <div class="col justify-content-start">
-                        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.StoreId" class="btn btn-outline-primary btn-sm">Back</a>
-                    </div>
-                    <div class="col justify-content-end text-right">
-                        <input type="submit" value="Confirm changes" class="btn btn-outline-primary btn-sm" />
+                        <input type="submit" value="Confirm changes" class="btn btn-secondary btn-sm" />
+                        <a asp-page="StoreProductAdmin" asp-route-storeId="@Model.StoreId" class="btn btn-outline-dark btn-sm">Return to product overview</a>
                     </div>
                 </div>
-                
+
             </form>
-            
+
         </div>
     </div>
 

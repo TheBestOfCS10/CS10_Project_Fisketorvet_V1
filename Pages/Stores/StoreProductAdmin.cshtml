@@ -5,82 +5,75 @@
 }
 
 <div class="container">
-    <div class="row justify-content-sm-center">
-        <h5 class="lead">Store administration for: @Model.Store.Name</h5>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col">
-            <p class="text-center">placeholder for search bar</p>
+    <div class="row justify-content-sm-center"> @*Title*@
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md px-3">
+                    <a asp-page="ShowStore" asp-route-storeId="@Model.StoreId" class="text-dark font-weight-normal"><span class="iconify pb-1" data-icon="ic:baseline-arrow-back-ios-new" data-inline="false"></span>Back to @Model.Store.Name</a>
+                </div>
+                <div class="col-md">
+                    <h5 class="lead text-center">Store administration for: @Model.Store.Name</h5>
+                </div>
+                <div class="col-md"></div>
+                
+            </div>
+            
         </div>
 
-        <div class="col">
-            <p class="text-center">
-                <a asp-page="AddNewProduct" asp-route-storeId="@Model.StoreId" class="btn btn-primary btn-sm">Add new product</a>
-            </p>
+    </div>
+    <div class="row justify-content-center pb-3 px-3">
+        @*Search and Add*@
+        <div class="col-md-5 pb-2 pb-md-1">
+            <div class="d-flex justify-content-md-start justify-content-center">
+                <form method="get" class="form-inline">
+                    <input type="text" placeholder="Search product" class="form-control searchbar-custom" />
+                </form>
+
+            </div>
 
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-10 justify-content-center">
-
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   @foreach (var product in Model.Products)
-                   {
-                        <tr>
-                            <td>@product.ProductId</td>
-                            <td>@product.ProductName</td>
-                            <td>@product.ProductDescription</td>
-                            <td>@product.ProductPrice</td>
-                            <td><a asp-page="EditProduct" asp-route-prodId="@product.ProductId" asp-route-storeId="@product.StoreID" class="btn btn-outline-primary btn-sm">Edit</a></td>
-                            <td>
-                                <a asp-page="DeleteProduct" asp-route-prodId="@product.ProductId" asp-route-storeId="@product.StoreID" class="btn btn-outline-danger btn-sm">Delete</a>
-
-
-                                @* Delete popup *@
-                                <!--<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
-        Delete item
-    </button>
-
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteMadalLongTitle">Delete item</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    You are about to delete @product.ProductName
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                    <form method="post" asp-page-handler="Delete" asp-route-storeId="@Model.StoreId">
-                        <button class="btn btn-danger">Delete</button>
-                        <input type="hidden" name="prodId" value="@product.ProductId"/>
-                    </form>
-                </div>
+        <div class="col-md-5">
+            <div class="d-flex justify-content-md-end justify-content-center">
+                <a asp-page="AddNewProduct" asp-route-storeId="@Model.StoreId" class="btn btn-secondary">Add new product</a>
             </div>
         </div>
-    </div>-->
-                            </td>
+    </div>
+
+
+    <div class="row justify-content-center mx-0"> @*Product table*@
+        <div class="col-10 justify-content-center">
+            <div class="table-responsive-sm">
+                <table class="table table-sm table-borderless table-hover">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>@product.ProductId</td>
+                                <td>@product.ProductName</td>
+                                <td>@product.ProductDescription</td>
+                                <td>@product.ProductPrice</td>
+                                <td class="text-right">
+                                    <a asp-page="EditProduct" asp-route-prodId="@product.ProductId" asp-route-storeId="@product.StoreID" class="btn btn-outline-dark btn-sm">Edit</a>
+                                </td>
+                                <td class="text-right">
+                                    <a asp-page="DeleteProduct" asp-route-prodId="@product.ProductId" asp-route-storeId="@product.StoreID" class="btn btn-outline-danger btn-sm">Delete</a>
 
-                </tbody>
-            </table>
-
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
