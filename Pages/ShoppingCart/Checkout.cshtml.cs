@@ -54,7 +54,7 @@ namespace CS10_Project_Fisketorvet_V1.Pages.ShoppingCart
                 order.Street = Street;
                 order.StreetNR = StreetNR;
                 order.ZIP = ZIP;
-                order.Items = Models.Basket.GetBasket(Models.Customer.Catalog[LoggedInUser.CurrentUser.User[0]].BasketID).Items;
+                order.Items = GetBasketItems(Models.Basket.GetBasket(Models.Customer.Catalog[LoggedInUser.CurrentUser.User[0]].BasketID).Items);
                 order.OwnerID = LoggedInUser.CurrentUser.User[0];
                 order.Price = CalculateTotalPrice(BasketModel.CalculateItemsTotalPrice(), 10);
                 Models.Order.Create(order);
@@ -75,6 +75,15 @@ namespace CS10_Project_Fisketorvet_V1.Pages.ShoppingCart
         public static double CalculateTotalPrice(double price, double discount)
         {
             return price -= price * 0.01 * discount;
+        }
+        public static List<int[]> GetBasketItems (List<int[]> basket)
+        {
+            List<int[]> list = new List<int[]>();
+            foreach(int[] i in basket)
+            {
+                list.Add(i);
+            }
+            return list;
         }
     }
 }

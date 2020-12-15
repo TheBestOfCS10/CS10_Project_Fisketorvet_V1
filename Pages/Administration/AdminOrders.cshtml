@@ -24,7 +24,7 @@
                     <tr>
                         <td>@c.ID</td>
                         <td>@Models.Customer.Search(c.OwnerID).FirstName @Models.Customer.Search(c.OwnerID).LastName</td>
-                        <td>@c.Date.ToString("dd-MM-yyyy")</td>
+                        <td>@c.Date.ToString("HH:mm dd/MM/yyyy")</td>
                         <td>@c.Price</td>
                         <td>
                             <a class="btn btn-dark" asp-page="/Administration/Order/EditOrder" asp-route-id="@c.ID" >Edit</a>
