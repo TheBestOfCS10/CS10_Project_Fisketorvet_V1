@@ -1,0 +1,46 @@
+﻿@page
+@model CS10_Project_Fisketorvet_V1.Pages.Administration.AdminProductsModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <table class="col-10 table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Access</th>
+                    <th>
+                        <a class="btn btn-success" asp-page="/Admin/CreateAdmin" asp-route-returnpage="/Administration/AdminCustomers">Create a new admin</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                @foreach (Models.Admin c in Models.Admin.AdminCatalog.Values)
+                {
+                    <tr>
+                        <td>@c.ID</td>
+                        <td>@c.FirstName @c.LastName</td>
+                        <td>@c.Email</td>
+                        <td>@c.CustomerGender</td>
+                        <td>
+                            @c.Access
+                        </td>
+                        <td>
+                            <a class="btn btn-dark" asp-page="/Admin/EditAdmin" asp-route-id="@c.ID">Edit</a>
+                            <a class="btn btn-danger" asp-page="/Admin/DeleteAdmin" asp-route-id="@c.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@page
+@model CS10_Project_Fisketorvet_V1.Pages.Administration.Admin.CreateAdminModel
+@{
+}
+<div class="container">
+    <div class="row justify-content-center pt-2">
+        <div class="col-lg-4 col-md-6 col-sm-8 py-4 pr-md-4 pr-sm-3">
+            <h5>Sign up for our administration platform!</h5>
+            <p class="lead">And enjoy many advantages:</p>
+            <table class="table table-borderless">
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>Add, delete or edit your products all from the click of a button</td>
+                </tr>
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>Get notified about new orders</td>
+                </tr>
+                <tr>
+                    <td><span class="iconify" data-icon="ion:add-circle" data-inline="false"></span></td>
+                    <td>Manage your store from anywhere, anytime</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-8 py-4 login-box">
+            <div class="text-center">
+                <h5>Sign up</h5>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Admin.FirstName">First Name:</label>
+                        <input class="form-control" type="text" asp-for="Admin.FirstName" />
+                        <span asp-validation-for="Admin.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Admin.LastName">Last Name:</label>
+                        <input class="form-control" type="text" asp-for="Admin.LastName" />
+                        <span asp-validation-for="Admin.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="Admin.Email">Email:</label>
+                        <input class="form-control" type="email" asp-for="Admin.Email" />
+                        <span asp-validation-for="Admin.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.Password1">Password:</label>
+                        <input class="form-control" type="text" asp-for="@Model.Password1" />
+                        <span asp-validation-for="@Model.Password1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.Password2">Confirm Password:</label>
+                        <input class="form-control" type="text" asp-for="@Model.Password2" />
+                        <span asp-validation-for="@Model.Password2" class="text-danger"></span>
+                        @{
+                            if (CreateAdminModel.InvalidPasswords)
+                            {
+                                <span class="text-danger">The passwords do not match</span>
+                            }
+                        }
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="Admin.CustomerGender" required class="form-control">
+                            <option disabled selected>Select your gender...</option>
+                            <option asp-route-gender="@Models.Customer.Gender.Male">Male</option>
+                            <option asp-route-gender="@Models.Customer.Gender.Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <input type="submit" class="btn btn-dark mb-1" value="Sign Up" />
+                            <a class="btn btn-outline-dark" asp-page="/LoggedInUser/LogIn">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
