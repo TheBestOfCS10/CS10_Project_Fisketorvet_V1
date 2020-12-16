@@ -3,19 +3,31 @@
 @{
     ViewData["Title"] = "OrderHistory";
 }
-<div>
-    Your order history is as follows:
-    <table class="table table-striped table-hover">
-        @foreach(Models.Order o in Models.Order.Catalog.Values)
-        {
-            if(o.OwnerID == CurrentUser.User[0])
-            {
-                <tr>
-                    <td style="word-wrap: normal">@OrderHistoryModel.ListProducts(o)</td>
-                    <td>@o.Date.ToString("HH:mm dd/MM/yyyy")</td>
-                    <td>@o.Price kr</td>
-                </tr>
-            }
-        }
-    </table>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            
+                <div class="px-0" >
+                    <a asp-page="/LoggedInUser/UserProfile" class="text-dark font-weight-normal"><span class="iconify pb-1" data-icon="ic:baseline-arrow-back-ios-new" data-inline="false"></span>Back to user profile</a>
+                </div>
+            <span><h5 class="py-3">Your order history:</h5></span>
+            <div>
+                <table class="table table-striped table-hover">
+                    @foreach (Models.Order o in Models.Order.Catalog.Values)
+                    {
+                        if (o.OwnerID == CurrentUser.User[0])
+                        {
+                            <tr>
+                                <td style="word-wrap: normal">@OrderHistoryModel.ListProducts(o)</td>
+                                <td>@o.Date.ToString("HH:mm dd/MM/yyyy")</td>
+                                <td>@o.Price kr</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
